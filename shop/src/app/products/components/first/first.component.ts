@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from '../shared/enums/category.enum'
+import { Category } from '../../../shared/enums/category.enum'
 
 @Component({
   selector: 'app-first-component',
-  templateUrl: './first-component.component.html',
-  styleUrls: ['./first-component.component.css']
+  templateUrl: './first.component.html',
+  styleUrls: ['./first.component.css']
 })
-export class FirstComponentComponent implements OnInit {
+export class FirstComponent implements OnInit {
 
   img: string = 'assets/img/Shirts1.jpg';
   name: string = 'First component';
