@@ -1,10 +1,10 @@
 <div>
-    <img [src]="img" alt="Denim Jeans" style="width:33%">
+    <img [src]="img" [alt]="name" style="width:33%">
     <h2>{{name}}</h2>
     <p>{{description}}</p>
     <p class="category">{{category}}</p>
     <p class="price">{{price}}</p>
     <p>
-        <span class="available"></span>
+        <span [ngClass]="isAvailable ? 'available' : 'not-available'"></span>
     </p>
 </div>

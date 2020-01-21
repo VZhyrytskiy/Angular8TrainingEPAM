@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
+  isAvailable: boolean = true;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onBuy(event) {
+    console.log('Buy OK!');
   }
 
 }
