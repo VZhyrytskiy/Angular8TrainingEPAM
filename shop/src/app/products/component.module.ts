@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FirstComponent } from './components/first/first.component';
 import { ProductComponent } from './components/product/product.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
 
 @NgModule({
     imports: [
@@ -9,10 +10,11 @@ import { ProductComponent } from './components/product/product.component';
     ],
     declarations: [
         FirstComponent,
-        ProductComponent
+        ProductComponent,
+        ProductListComponent
     ],
     exports: [
-        ProductComponent
+        ProductListComponent
     ]
 })
 export class ComponentModule { }

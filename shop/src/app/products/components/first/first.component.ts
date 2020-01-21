@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Category } from '../../../shared/enums/category.enum'
+import { Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-first-component',
@@ -7,14 +8,7 @@ import { Category } from '../../../shared/enums/category.enum'
   styleUrls: ['./first.component.css']
 })
 export class FirstComponent implements OnInit {
-@Input() isAvailable: boolean;
-
-  img: string = 'assets/img/Shirts1.jpg';
-  name: string = 'First component';
-  description: string = 'Firstt Descriprion';
-  price: number = 99.90;
-  category: Category = Category.shirts;
-
+@Input() product: Product;
 
   constructor() { }
 

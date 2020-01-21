@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-product',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  isAvailable: boolean = true;
+  @Input() product: Product;
 
   constructor() { }
 
@@ -14,7 +15,7 @@ export class ProductComponent implements OnInit {
   }
 
   onBuy(event) {
-    console.log('Buy OK!');
+    console.log('Buy OK!' + this.product.id);
   }
 
 }
