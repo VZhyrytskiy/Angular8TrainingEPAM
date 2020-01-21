@@ -1,0 +1,55 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+  }
+  
+  .category {
+    color: grey;
+    font-size: 22px;
+  }
+  
+  .price {
+    color: green;
+    font-size: 18px;
+  }
+  
+  .card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  .card button:hover {
+    opacity: 0.7;
+  }
+
+  .card button:disabled
+  {
+    opacity: 0.7;
+    background-color: rgb(236, 146, 146);
+  }
+
+  .available {
+    height: 25px;
+    width: 25px;
+    background-color: rgb(44, 165, 33);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .not-available {
+    height: 25px;
+    width: 25px;
+    background-color: rgb(165, 33, 33);
+    border-radius: 50%;
+    display: inline-block;
+  }

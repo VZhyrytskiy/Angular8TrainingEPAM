@@ -1,1 +1,13 @@
-<p>first-component works!</p>
+<div class="card">
+    <img [src]="img" alt="Denim Jeans" style="width:33%">
+    <h2>{{name}}</h2>
+    <p>{{description}}</p>
+    <p class="category">{{category}}</p>
+    <p class="price">{{price}}</p>
+    <p>
+        <span class="available"></span>
+    </p>
+    <!-- <p>
+        <button [disabled]="!isAvailable">Add to Basket</button>
+    </p> -->
+</div>
