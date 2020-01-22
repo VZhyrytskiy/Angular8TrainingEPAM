@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./basket.component.scss']
 })
 export class BasketComponent implements OnInit {
+  cartList = false;
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  onCartClick($event) {
+    this.cartList = !this.cartList;
   }
-
 }

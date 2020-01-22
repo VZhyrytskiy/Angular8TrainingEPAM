@@ -2,9 +2,9 @@ $main-color: #6394f8;
 $light-text: #abb0be;
 $font-stack: Helvetica, sans-serif;
 
-// *, *:before, *:after {
-//   box-sizing: border-box;
-// }
+*, *:before, *:after {
+  box-sizing: border-box;
+}
 
 // body {
 //   font: 14px/22px "Lato", Arial, sans-serif;
@@ -24,6 +24,8 @@ nav {
   background: #f8f8f8;
   font-size: 16px;
   font: 100% $font-stack;
+  max-width: 1200px;
+  margin: auto;
 
   .navbar-left {
     float: left;
@@ -67,13 +69,14 @@ nav {
 }
 
 .shopping-cart {
-  margin: 20px 0;
+  margin: 10px 0 0 -240px;
   float: right;
-  background: white;
+  background: #f3f3f3;
   width: 320px;
-  position: relative;
+  position: absolute;
   border-radius: 3px;
   padding: 20px;
+  z-index: 1000;
 
   .shopping-cart-header {
     border-bottom: 1px solid #e8e8e8;
@@ -122,7 +125,7 @@ nav {
   width: 0;
   position: absolute;
   pointer-events: none;
-  border-bottom-color: white;
+  border-bottom-color: #d6d6d6;
   border-width: 8px;
   margin-left: -8px;
 }

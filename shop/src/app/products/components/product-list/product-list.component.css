@@ -4,8 +4,11 @@
     justify-content: space-around;
     flex-wrap: wrap;
     flex-direction: row;
-    width: 900px;
+    max-width: 1200px;
     margin: 10px auto;
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
   }
   
   .box div {

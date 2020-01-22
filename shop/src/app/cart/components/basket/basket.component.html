@@ -1,8 +1,9 @@
 <ul class="navbar-right">
   <li>
-    <a href="#" id="cart"
+    <a href="#" id="cart" (click)="onCartClick($event)"
       ><i class="fa fa-shopping-cart"></i> Cart
       <span class="badge">3</span>
     </a>
   </li>
+  <app-cart-list *ngIf="cartList"></app-cart-list>
 </ul>
