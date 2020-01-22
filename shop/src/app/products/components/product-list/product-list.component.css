@@ -5,7 +5,7 @@
     flex-wrap: wrap;
     flex-direction: row;
     width: 900px;
-    margin: 0 auto;
+    margin: 10px auto;
   }
   
   .box div {
