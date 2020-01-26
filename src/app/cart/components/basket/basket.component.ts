@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BasketComponent implements OnInit {
   cartList = false;
-  constructor() {}
+  productsCount = 0;
 
-  ngOnInit() {}
+  constructor() { }
+
+  ngOnInit() { }
 
   onCartClick($event) {
     this.cartList = !this.cartList;

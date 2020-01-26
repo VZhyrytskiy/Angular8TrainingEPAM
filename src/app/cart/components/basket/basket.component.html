@@ -2,8 +2,8 @@
   <li>
     <a href="#" id="cart" (click)="onCartClick($event)"
       ><i class="fa fa-shopping-cart"></i> Cart
-      <span class="badge">3</span>
+      <span class="badge">{{productsCount}}</span>
     </a>
   </li>
-  <app-cart-list *ngIf="cartList"></app-cart-list>
+  <app-cart-list *ngIf="cartList" (ClickOut)="onCartClick()"></app-cart-list>
 </ul>

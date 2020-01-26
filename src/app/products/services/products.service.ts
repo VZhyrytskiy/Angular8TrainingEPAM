@@ -12,4 +12,8 @@ export class ProductsService {
   getProducts(): Array<Product> {
     return Data;
   }
+
+  getProductById(id: number) {
+    return Data.find(item => item.id === id);
+  }
 }
