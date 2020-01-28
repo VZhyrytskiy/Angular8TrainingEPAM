@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from '../../services/cart.service';
+import { Cart } from '../../models/cart.model';
 
 @Component({
   selector: 'app-basket',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BasketComponent implements OnInit {
   cartList = false;
-  productsCount = 0;
+  service: CartService;
 
-  constructor() { }
+  get productsCount(): number {
+    return this.cartService.getCount() || 0;
+  }
+
+  constructor(private cartService: CartService) { }
 
   ngOnInit() { }
 

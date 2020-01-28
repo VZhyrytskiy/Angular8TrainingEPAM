@@ -30,12 +30,12 @@ export class CartService {
     return this.carts.find(item => item.id === id);
   }
 
-  addProduct(product: Product) {
+  addProduct(product: Product): void {
     const cart = this.mapProductToCart(product, 1);
     this.addCart(cart);
   }
 
-  addCart(cart: Cart) {
+  addCart(cart: Cart): void {
     const item = this.getCartById(cart.id);
     if (item) {
       item.count++;
@@ -44,16 +44,26 @@ export class CartService {
     }
   }
 
-  removeCart(id: number) {
+  removeCart(id: number): void {
     const index = this.carts.findIndex(item => item.id === id);
     if (index > -1) {
       this.carts[index].count > 1 ? this.carts[index].count-- : this.carts.splice(index, 1);
     }
   }
 
-  getSum() {
+  getSum(): number {
     let sum = 0;
     this.carts.forEach(item => sum = sum + item.count * item.price);
     return sum;
+  }
+
+  getCount(): number {
+    return this.carts.length;
+  }
+
+  getSumCount(): number {
+    let count = 0;
+    this.carts.forEach(item => count = count + item.count);
+    return count;
   }
 }

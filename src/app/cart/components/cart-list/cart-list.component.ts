@@ -10,11 +10,19 @@ import { CartService } from '../../services/cart.service';
 export class CartListComponent implements OnInit {
   @Output() ClickOut = new EventEmitter();
 
-  carts: Array<Cart>;
+  get sum() {
+    return this.cartService.getSum() || 0;
+  }
 
-  constructor(private cartService: CartService) {
-     this.carts = cartService.getCarts();
-   }
+  get sumCount() {
+    return this.cartService.getSumCount() || 0;
+  }
+
+  get carts() {
+    return this.cartService.getCarts();
+  }
+
+  constructor(private cartService: CartService) { }
 
   ngOnInit() {
   }
