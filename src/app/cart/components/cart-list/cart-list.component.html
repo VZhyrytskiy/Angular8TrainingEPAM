@@ -5,7 +5,7 @@
       <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">{{ sumCount }}</span>
       <div class="shopping-cart-total">
         <span class="lighter-text">Total: </span>
-        <span class="main-color-text">{{ sum }}</span>
+        <span class="main-color-text">{{ sum | appMoney }}</span>
       </div>
     </div>
     <ul class="shopping-cart-items">
