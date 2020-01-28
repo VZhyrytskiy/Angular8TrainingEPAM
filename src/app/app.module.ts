@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ComponentModule } from './products/component.module';
 import { NavModule } from './header/nav.module';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -12,7 +13,6 @@ import { NavModule } from './header/nav.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     ComponentModule,
     NavModule
   ],
