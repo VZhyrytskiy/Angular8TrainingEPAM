@@ -30,4 +30,8 @@ export class CartListComponent implements OnInit {
   onCange(e) {
     this.ClickOut.emit(e);
   }
+
+  onDeleteItem(id: number) {
+    this.cartService.removeCart(id);
+  }
 }

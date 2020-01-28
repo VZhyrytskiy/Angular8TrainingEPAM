@@ -10,7 +10,7 @@
     </div>
     <ul class="shopping-cart-items">
       <li class="clearfix" *ngFor="let item of carts">
-        <app-cart-item [cart]="item"></app-cart-item>
+        <app-cart-item [cart]="item" (Delete)="onDeleteItem($event)"></app-cart-item>
       </li>
     </ul>
     <a href="#" class="button">Checkout</a>
