@@ -11,6 +11,7 @@ export class ProductListComponent implements OnInit {
   products: Array<Product>;
 
   constructor(private productsService: ProductsService) {
+    // пропустили this, хотя работает, так как берете аргумент, а не свойство
     this.products = productsService.getProducts();
   }
 
