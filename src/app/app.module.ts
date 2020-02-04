@@ -4,11 +4,13 @@ import { AppComponent } from './app.component';
 import { ComponentModule } from './products/component.module';
 import { NavModule } from './header/nav.module';
 import { CoreModule } from './core/core.module';
+import { AboutComponent } from './layout/components/about/about.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

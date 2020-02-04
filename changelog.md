@@ -99,3 +99,7 @@ HomeTask 3
 5. Создайте сервис GeneratorService (core/services/generator.ts), который должен генерировать случайную последовательность символов длины n 
    из набора a-z, A-Z, 0-9. Создайте функцию GeneratorFactory(n: number), оторая будет предоставлять сгенеренную строку, используя GeneratorService
    Зарегистрируйте GeneratorService используя useFactory.
+   
+**РЕАЛИЗОВАНО**
+6. Создайте демо-компонент AboutComponent (layout/components/about.component.ts) и внедрите перечисленные выше сервисы.  
+   Используйте декоратор @Optional().
