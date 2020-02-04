@@ -7,15 +7,13 @@ import { Product } from 'src/app/products/models/product.model';
 })
 export class CartService {
 
-  carts: Array<CartItem> = [];
+  cartProducts: Array<CartItem> = [];
+  totalQuantity = 0;
+  totalSum = 0;
 
   constructor() { }
 
-  getCarts(): Array<CartItem> {
-    return this.carts;
-  }
-
-  mapProductToCart(product: Product, count: number): CartItem {
+  private mapProductToCart(product: Product, count: number): CartItem {
     return {
       id: product.id,
       name: product.name,
@@ -25,44 +23,76 @@ export class CartService {
     };
   }
 
-  getCartById(id: number): CartItem {
-    return this.carts.find(item => item.id === id);
+  private getCartById(id: number): CartItem {
+    return this.cartProducts.find(item => item.id === id);
+  }
+
+  private getIndexProductById(id: number): number {
+    return this.cartProducts.findIndex(item => item.id === id);
   }
 
   addProduct(product: Product): void {
     const cart = this.mapProductToCart(product, 1);
     this.addCart(cart);
+    this.updateCartData();
   }
 
-  addCart(cart: CartItem): void {
-    const item = this.getCartById(cart.id);
+  private addCart(cart: CartItem): void {
+    if (this.increaseQuantity(cart.id)) {
+    } else {
+      this.cartProducts.push(cart);
+    }
+  }
+
+  private increaseQuantity(id: number): boolean {
+    const item = this.getCartById(id);
     if (item) {
       item.count++;
-    } else {
-      this.carts.push(cart);
+      return true;
     }
+    return false;
   }
 
-  removeCart(id: number): void {
-    const index = this.carts.findIndex(item => item.id === id);
-    if (index > -1) {
-      this.carts[index].count > 1 ? this.carts[index].count-- : this.carts.splice(index, 1);
+  private decreaseQuantity(id: number): boolean {
+    const index = this.getIndexProductById(id);
+    if (index > -1 && this.cartProducts[index].count > 1) {
+      this.cartProducts[index].count--;
+      return true;
     }
+    return false;
+  }
+
+  removeProduct(id: number): void {
+    if (!this.decreaseQuantity(id)) {
+      const index = this.getIndexProductById(id);
+      this.cartProducts.splice(index, 1);
+    }
+    this.updateCartData();
+  }
+
+  removeAllProducts(): void {
+    this.cartProducts = [];
+    this.updateCartData();
+  }
+
+  private updateCartData(): void {
+    this.totalQuantity = this.getCount();
+    this.totalSum = this.getSumCount();
   }
 
   getSum(): number {
     let sum = 0;
-    this.carts.forEach(item => sum = sum + item.count * item.price);
+    this.cartProducts.forEach(item => sum = sum + item.count * item.price);
     return sum;
   }
 
   getCount(): number {
-    return this.carts.length;
+    return this.cartProducts.length;
   }
 
-  getSumCount(): number {
+  private getSumCount(): number {
     let count = 0;
-    this.carts.forEach(item => count = count + item.count);
+    this.cartProducts.forEach(item => count = count + item.count);
     return count;
   }
 }

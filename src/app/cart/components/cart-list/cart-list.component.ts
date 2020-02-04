@@ -13,12 +13,8 @@ export class CartListComponent implements OnInit {
     return this.cartService.getSum();
   }
 
-  get sumCount() {
-    return this.cartService.getSumCount();
-  }
-
   get carts() {
-    return this.cartService.getCarts();
+    return this.cartService.cartProducts;
   }
 
   constructor(private cartService: CartService) { }
@@ -31,6 +27,6 @@ export class CartListComponent implements OnInit {
   }
 
   onDeleteItem(id: number) {
-    this.cartService.removeCart(id);
+    this.cartService.removeProduct(id);
   }
 }
