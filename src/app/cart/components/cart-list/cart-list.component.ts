@@ -1,5 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Cart } from '../../models/cart.model';
 import { CartService } from '../../services/cart.service';
 
 @Component({
@@ -8,16 +7,14 @@ import { CartService } from '../../services/cart.service';
   styleUrls: ['./cart-list.component.css']
 })
 export class CartListComponent implements OnInit {
-  // ClickOut - это экзмемпляр, значит надо писать в нижнем регистре
-  @Output() ClickOut = new EventEmitter();
+  @Output() clickOut = new EventEmitter();
 
   get sum() {
-    return this.cartService.getSum() || 0; // на сколько я вижу, то метод и так будет возвращать или 0 или сумму
-    // но лучше этот ноль везде перенести из компонента в сервис. Он тут захламляет логику
+    return this.cartService.getSum();
   }
 
   get sumCount() {
-    return this.cartService.getSumCount() || 0;
+    return this.cartService.getSumCount();
   }
 
   get carts() {
@@ -30,7 +27,7 @@ export class CartListComponent implements OnInit {
   }
 
   onCange(e) {
-    this.ClickOut.emit(e);
+    this.clickOut.emit(e);
   }
 
   onDeleteItem(id: number) {

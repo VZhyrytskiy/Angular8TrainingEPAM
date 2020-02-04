@@ -1,10 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { MoneyPipe } from './pipes/money.pipe';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     imports: [
-        BrowserModule
+        CommonModule
     ],
     declarations: [
         MoneyPipe

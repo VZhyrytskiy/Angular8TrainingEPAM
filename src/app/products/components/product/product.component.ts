@@ -1,6 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from '../../models/product.model';
-import { CartService } from 'src/app/cart/services/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -9,20 +8,16 @@ import { CartService } from 'src/app/cart/services/cart.service';
 })
 export class ProductComponent implements OnInit {
   @Input() product: Product;
+  @Output() addProduct = new EventEmitter<Product>();
 
-  // service: CartService;
 
-  constructor(private cartService: CartService) {
-    // this.service = cartService;
-  }
+  constructor() { }
 
   ngOnInit() {
   }
 
   onBuy(event) {
-    // Лучше сделать этот компонент без зависимостей, презентационный.
-    // Пусть он генерит аутпут, а родитель уже решает, что делать с продуктом
-    this.cartService.addProduct(this.product);
+    this.addProduct.emit(this.product);
   }
 
 }

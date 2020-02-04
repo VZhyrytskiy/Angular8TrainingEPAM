@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Cart } from '../../models/cart.model';
+import { CartItem } from '../../models/cart.model';
 
 @Component({
   selector: 'app-cart-item',
@@ -7,9 +7,8 @@ import { Cart } from '../../models/cart.model';
   styleUrls: ['./cart-item.component.css']
 })
 export class CartItemComponent implements OnInit {
-  @Input() cart: Cart;
-  // свойства в нижнем регистре
-  @Output() Delete = new EventEmitter<number>();
+  @Input() cart: CartItem;
+  @Output() delete = new EventEmitter<number>();
 
   constructor() { }
 
@@ -17,7 +16,7 @@ export class CartItemComponent implements OnInit {
   }
 
   onDelete(id: number) {
-    this.Delete.emit(id);
+    this.delete.emit(id);
   }
 
 }

@@ -5,5 +5,5 @@
       <span class="badge">{{productsCount}}</span>
     </a>
   </li>
-  <app-cart-list *ngIf="cartList" (ClickOut)="onCartClick()"></app-cart-list>
+  <app-cart-list *ngIf="showCartList" (clickOut)="onCartClick()"></app-cart-list>
 </ul>

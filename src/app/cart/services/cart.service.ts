@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ProductsService } from 'src/app/products/services/products.service';
-import { Cart } from '../models/cart.model';
+import { CartItem } from '../models/cart.model';
 import { Product } from 'src/app/products/models/product.model';
 
 @Injectable({
@@ -8,17 +7,15 @@ import { Product } from 'src/app/products/models/product.model';
 })
 export class CartService {
 
-  carts: Array<Cart> = [];
+  carts: Array<CartItem> = [];
 
-  // зависимость есть, но не используется
-  // все ли методы должны быть публичными?
-  constructor(private productsService: ProductsService) { }
+  constructor() { }
 
-  getCarts(): Array<Cart> {
+  getCarts(): Array<CartItem> {
     return this.carts;
   }
 
-  mapProductToCart(product: Product, count: number): Cart {
+  mapProductToCart(product: Product, count: number): CartItem {
     return {
       id: product.id,
       name: product.name,
@@ -28,7 +25,7 @@ export class CartService {
     };
   }
 
-  getCartById(id: number): Cart {
+  getCartById(id: number): CartItem {
     return this.carts.find(item => item.id === id);
   }
 
@@ -37,7 +34,7 @@ export class CartService {
     this.addCart(cart);
   }
 
-  addCart(cart: Cart): void {
+  addCart(cart: CartItem): void {
     const item = this.getCartById(cart.id);
     if (item) {
       item.count++;

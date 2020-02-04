@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
-import { Cart } from '../../models/cart.model';
 
 @Component({
   selector: 'app-basket',
@@ -8,12 +7,10 @@ import { Cart } from '../../models/cart.model';
   styleUrls: ['./basket.component.scss']
 })
 export class BasketComponent implements OnInit {
-  cartList = false; // название перемнной не отображает ее суть, не понятно почему она булевая,
-  // лучше называть переменную isЧего-то-там
-  // service: CartService;
+  showCartList = false;
 
   get productsCount(): number {
-    return this.cartService.getCount() || 0;
+    return this.cartService.getCount();
   }
 
   constructor(private cartService: CartService) { }
@@ -21,6 +18,6 @@ export class BasketComponent implements OnInit {
   ngOnInit() { }
 
   onCartClick($event) {
-    this.cartList = !this.cartList;
+    this.showCartList = !this.showCartList;
   }
 }
