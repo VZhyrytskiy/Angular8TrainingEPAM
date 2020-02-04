@@ -10,17 +10,19 @@ import { CartService } from 'src/app/cart/services/cart.service';
 export class ProductComponent implements OnInit {
   @Input() product: Product;
 
-  service: CartService;
+  // service: CartService;
 
   constructor(private cartService: CartService) {
-    this.service = cartService;
+    // this.service = cartService;
   }
 
   ngOnInit() {
   }
 
   onBuy(event) {
-    this.service.addProduct(this.product);
+    // Лучше сделать этот компонент без зависимостей, презентационный.
+    // Пусть он генерит аутпут, а родитель уже решает, что делать с продуктом
+    this.cartService.addProduct(this.product);
   }
 
 }

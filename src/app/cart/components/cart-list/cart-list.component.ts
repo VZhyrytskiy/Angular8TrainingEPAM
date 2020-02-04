@@ -8,10 +8,12 @@ import { CartService } from '../../services/cart.service';
   styleUrls: ['./cart-list.component.css']
 })
 export class CartListComponent implements OnInit {
+  // ClickOut - это экзмемпляр, значит надо писать в нижнем регистре
   @Output() ClickOut = new EventEmitter();
 
   get sum() {
-    return this.cartService.getSum() || 0;
+    return this.cartService.getSum() || 0; // на сколько я вижу, то метод и так будет возвращать или 0 или сумму
+    // но лучше этот ноль везде перенести из компонента в сервис. Он тут захламляет логику
   }
 
   get sumCount() {

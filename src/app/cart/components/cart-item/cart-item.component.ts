@@ -8,6 +8,7 @@ import { Cart } from '../../models/cart.model';
 })
 export class CartItemComponent implements OnInit {
   @Input() cart: Cart;
+  // свойства в нижнем регистре
   @Output() Delete = new EventEmitter<number>();
 
   constructor() { }

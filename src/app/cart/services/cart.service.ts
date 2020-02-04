@@ -10,6 +10,8 @@ export class CartService {
 
   carts: Array<Cart> = [];
 
+  // зависимость есть, но не используется
+  // все ли методы должны быть публичными?
   constructor(private productsService: ProductsService) { }
 
   getCarts(): Array<Cart> {

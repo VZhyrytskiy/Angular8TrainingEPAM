@@ -8,8 +8,9 @@ import { Cart } from '../../models/cart.model';
   styleUrls: ['./basket.component.scss']
 })
 export class BasketComponent implements OnInit {
-  cartList = false;
-  service: CartService;
+  cartList = false; // название перемнной не отображает ее суть, не понятно почему она булевая,
+  // лучше называть переменную isЧего-то-там
+  // service: CartService;
 
   get productsCount(): number {
     return this.cartService.getCount() || 0;
