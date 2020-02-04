@@ -1,4 +1,4 @@
-export class UseClass {
+export class LocalStoreEngine {
     private localStorage: Storage;
 
     constructor() {
