@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ComponentModule } from './products/component.module';
 import { NavModule } from './header/nav.module';
-import { LocalStorageService } from './core/services/local-storage.service';
-import { LocalStoreEngine } from './core/models/local-store-engine-class';
+import { CoreModule } from './core/core.module';
 
 
 @NgModule({
@@ -14,11 +13,10 @@ import { LocalStoreEngine } from './core/models/local-store-engine-class';
   imports: [
     BrowserModule,
     ComponentModule,
+    CoreModule,
     NavModule
   ],
-  providers: [
-    { provide: LocalStorageService, useClass: LocalStoreEngine }
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
