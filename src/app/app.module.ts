@@ -1,22 +1,22 @@
+import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ComponentModule } from './products/component.module';
 import { NavModule } from './header/nav.module';
 import { CoreModule } from './core/core.module';
-import { AboutComponent } from './layout/components/about/about.component';
-
+import { NavComponent } from './header/components/nav/nav.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AboutComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     ComponentModule,
     CoreModule,
-    NavModule
+    NavModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
