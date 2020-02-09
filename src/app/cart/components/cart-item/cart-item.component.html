@@ -1,7 +1,7 @@
 <div>
     <img [src]="cart.img" alt="cart.name" />
     <span class="item-name">{{cart.name}}</span>
-    <span class="item-price">{{cart.price | currency:'BYN'}}</span>
+    <span class="item-price">{{cart.price | currency:'BYN '}}</span>
     <span class="item-quantity">Quantity: {{cart.count}}</span>
     <a href="#" class="myButton" (click)="onDelete(cart.id)">x</a>
 </div>

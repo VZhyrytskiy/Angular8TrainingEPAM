@@ -2,8 +2,8 @@
     <img [src]="product.img" [alt]="product.name">
     <h2>{{product.name}}</h2>
     <p>{{product.description}}</p>
-    <p class="product.category">{{product.category}}</p>
-    <p class="product.price">{{product.price | currency:'BYN'}}</p>
+    <p class="product.category">{{product.category | uppercase }}</p>
+    <p class="product.price">{{product.price | currency:'BYN '}}</p>
     <p>
         <span [ngClass]="product.isAvailable ? 'available' : 'not-available'"></span>
     </p>
