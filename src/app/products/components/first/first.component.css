@@ -2,12 +2,12 @@
     color: grey;
     font-size: 22px;
   }
-  
+
   .price {
     color: green;
     font-size: 18px;
   }
-  
+
   .available {
     height: 25px;
     width: 25px;
@@ -25,5 +25,5 @@
   }
 
   img {
-    width:40%
+    width:75%
   }

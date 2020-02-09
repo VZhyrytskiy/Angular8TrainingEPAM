@@ -1,6 +1,9 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
 body {
   font: 14px/22px "Lato", Arial, sans-serif;
   background: #95a6ca40;
-  padding: 0;
-  margin: 0;
 }
