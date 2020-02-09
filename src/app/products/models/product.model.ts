@@ -1,3 +1,5 @@
+import { Sex } from 'src/app/shared/enums/sex.enum';
+
 export interface Product {
   id: number;
   isAvailable: boolean;
@@ -6,4 +8,5 @@ export interface Product {
   description: string;
   price: number;
   category: string;
+  sex: Sex;
 }
