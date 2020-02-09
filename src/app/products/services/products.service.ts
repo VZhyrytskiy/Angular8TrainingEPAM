@@ -1,3 +1,4 @@
+import { Observable, Observer } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Data } from './../../shared/commonData';
 import { Product } from '../models/product.model';
@@ -9,8 +10,10 @@ export class ProductsService {
 
   constructor() { }
 
-  getProducts(): Array<Product> {
-    return Data;
+  getProducts(): Observable<Array<Product>> {
+    return new Observable<Array<Product>>((observer: Observer<Array<Product>>) => {
+      observer.next(Data);
+    });
   }
 
   getProductById(id: number) {
