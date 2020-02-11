@@ -9,7 +9,7 @@ import { ConfigOptionsService } from './services/config-options.service';
 @NgModule({
   declarations: [],
   providers: [
-    ConfigOptionsService,
+    // ConfigOptionsService, // он уже зарегистрирован через собственный декоратор
     { provide: LocalStorageService, useClass: LocalStoreEngine },
     { provide: ConstantsService, useValue : { App: 'TaskManager', Ver: '1.0' } },
     { provide: GeneratorService, useFactory: GeneratorFactory(8)}
