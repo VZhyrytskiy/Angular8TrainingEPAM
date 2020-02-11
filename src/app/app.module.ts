@@ -6,6 +6,7 @@ import { ComponentModule } from './products/component.module';
 import { NavModule } from './header/nav.module';
 import { CoreModule } from './core/core.module';
 import { NavComponent } from './header/components/nav/nav.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NavComponent } from './header/components/nav/nav.component';
     ComponentModule,
     CoreModule,
     NavModule,
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

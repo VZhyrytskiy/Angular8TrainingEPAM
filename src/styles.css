@@ -7,3 +7,6 @@ body {
   font: 14px/22px "Lato", Arial, sans-serif;
   background: #95a6ca40;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
