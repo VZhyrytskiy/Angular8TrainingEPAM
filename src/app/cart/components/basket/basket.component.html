@@ -2,7 +2,7 @@
   <li>
     <a href="#" id="cart" (click)="onCartClick($event)"
       ><i class="fa fa-shopping-cart"></i> Cart
-      <span class="badge">{{productsCount}}</span>
+      <span class="badge-label">{{productsCount}}</span>
     </a>
   </li>
   <app-cart-list *ngIf="showCartList" (clickOut)="onCartClick()"></app-cart-list>

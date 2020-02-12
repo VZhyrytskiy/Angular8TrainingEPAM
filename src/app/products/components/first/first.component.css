@@ -1,29 +1,33 @@
-  .category {
-    color: grey;
-    font-size: 22px;
-  }
+* {
+  margin: auto;
+}
+.category {
+  color: grey;
+  font-size: 22px;
+}
 
-  .price {
-    color: green;
-    font-size: 18px;
-  }
+.price {
+  color: green;
+  font-size: 18px;
+}
 
-  .available {
-    height: 25px;
-    width: 25px;
-    background-color: rgb(44, 165, 33);
-    border-radius: 50%;
-    display: inline-block;
-  }
+.available {
+  height: 25px;
+  width: 25px;
+  background-color: rgb(44, 165, 33);
+  border-radius: 50%;
+  display: inline-block;
+}
 
-  .not-available {
-    height: 25px;
-    width: 25px;
-    background-color: rgb(165, 33, 33);
-    border-radius: 50%;
-    display: inline-block;
-  }
+.not-available {
+  height: 25px;
+  width: 25px;
+  background-color: rgb(165, 33, 33);
+  border-radius: 50%;
+  display: inline-block;
+}
 
-  img {
-    width:75%
-  }
+img {
+  width: 75%;
+  margin-top: 10px;
+}

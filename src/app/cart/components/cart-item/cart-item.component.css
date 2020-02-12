@@ -1,3 +1,12 @@
 p {
   margin: 0;
 }
+
+.cart-item-text{
+  font-size: small;
+}
+
+.cart-item-button{
+  transform: scale(0.8);
+}
+

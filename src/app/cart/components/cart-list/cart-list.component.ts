@@ -9,6 +9,9 @@ import { CartService } from '../../services/cart.service';
 export class CartListComponent implements OnInit {
   @Output() clickOut = new EventEmitter();
 
+  orderKey: string;
+  orderDirection = false;
+
   get sum() {
     return this.cartService.getSum();
   }
@@ -28,5 +31,10 @@ export class CartListComponent implements OnInit {
 
   onDeleteItem(id: number) {
     this.cartService.removeProduct(id);
+  }
+
+  onSortChange(event) {
+    this.orderKey = event.target.value;
+    this.orderDirection = !this.orderDirection;
   }
 }

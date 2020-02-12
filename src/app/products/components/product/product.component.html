@@ -1,7 +1,5 @@
 <div class="card">
-    <app-first-component [product]="product"></app-first-component>
-    <p>
-        <button [disabled]="!product.isAvailable" (click)="onBuy(event)">Buy</button>
-    </p>
+  <app-first-component [product]="product"></app-first-component>
+  <button type="button" class="btn btn-primary btn-lg btn-block btn-sm" [disabled]="!product.isAvailable"
+    (click)="onBuy(event)">Buy</button>
 </div>
-

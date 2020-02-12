@@ -1,10 +1,21 @@
-<div>
+<div class="container">
+  <div class="row">
     <img [src]="product.img" [alt]="product.name">
-    <h2>{{product.name}}</h2>
-    <p>{{product.description}}</p>
-    <p class="product.category">{{product.category | uppercase }}</p>
-    <p class="product.price">{{product.price | currency:'BYN '}}</p>
-    <p>
-        <span [ngClass]="product.isAvailable ? 'available' : 'not-available'"></span>
-    </p>
+  </div>
+  <div class="row">
+    <h5>{{product.name}}</h5>
+  </div>
+  <div class="row">
+    <div>{{product.description}}</div>
+  </div>
+  <div class="row">
+    <div>{{product.category | uppercase }}</div>
+  </div>
+  <div class="row">
+    <div>{{product.price | currency:'BYN '}}</div>
+  </div>
+  <div class="row">
+    <span [ngClass]="product.isAvailable ? 'badge badge-pill badge-primary' : 'badge badge-pill badge-secondary'">{{product.isAvailable ? 'in stock' : '
+    order'}}</span>
+  </div>
 </div>

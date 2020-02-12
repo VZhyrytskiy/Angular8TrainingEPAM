@@ -1,7 +1,24 @@
-<div>
-    <img [src]="cart.img" alt="cart.name" />
-    <span class="item-name">{{cart.name}}</span>
-    <span class="item-price">{{cart.price | currency:'BYN '}}</span>
-    <span class="item-quantity">Quantity: {{cart.count}}</span>
-    <a href="#" class="myButton" (click)="onDelete(cart.id)">x</a>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <img [src]="cart.img" alt="cart.name" />
+    </div>
+    <div class="col-8">
+      <div class="cart-item-text">
+        {{cart.name}}
+      </div>
+      <div class="cart-item-text">
+        {{cart.price | currency:'BYN '}}
+      </div>
+      <div class="cart-item-text">
+        Quantity: {{cart.count}}
+      </div>
+      <div class="btn-group btn-group-sm cart-item-button" role="group">
+        <button type="button" class="btn btn-secondary">+</button>
+      </div>
+      <div class="btn-group btn-group-sm cart-item-button" role="group">
+        <button type="button" class="btn btn-secondary" (click)="onDelete(cart.id)">-</button>
+      </div>
+    </div>
+  </div>
 </div>

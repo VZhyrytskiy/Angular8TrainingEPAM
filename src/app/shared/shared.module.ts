@@ -2,6 +2,7 @@ import { MoneyPipe } from './pipes/money.pipe';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChangeColorDirective } from './directives/change-color.directive';
+import { OrderByPipe } from './pipes/order-by.pipe';
 
 @NgModule({
     imports: [
@@ -9,10 +10,12 @@ import { ChangeColorDirective } from './directives/change-color.directive';
     ],
     declarations: [
         MoneyPipe,
-        ChangeColorDirective
+        ChangeColorDirective,
+        OrderByPipe
     ],
     exports: [
         MoneyPipe,
+        OrderByPipe,
         ChangeColorDirective
     ]
 })

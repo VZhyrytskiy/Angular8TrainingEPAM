@@ -2,14 +2,32 @@
 <div class="container">
   <div id="shopping-cart" class="shopping-cart">
     <div class="shopping-cart-header">
-      <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">{{ this.cartService.totalSum }}</span>
+      <i class="fa fa-shopping-cart cart-icon"></i><span class="badge-label">{{ this.cartService.totalSum }}</span>
       <div class="shopping-cart-total">
         <span class="lighter-text">Total: </span>
         <span class="main-color-text">{{ sum | currency:'BYN ' }}</span>
       </div>
     </div>
+    <div class="cart-list-seting">
+      <div class="row">
+        <div class="col-8">
+          <select class="custom-select custom-select-sm">
+            <option selected>none</option>
+            <option value="price">By Price</option>
+            <option value="name">By Name</option>
+            <option value="count">By Count</option>
+          </select>
+        </div>
+        <div class="col-4 cart-list-toggle">
+          <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="customSwitch1">
+            <label class="custom-control-label cart-list-label" for="customSwitch1">desc</label>
+          </div>
+        </div>
+      </div>
+    </div>
     <ul class="shopping-cart-items">
-      <li class="clearfix" *ngFor="let item of carts">
+      <li *ngFor="let item of carts | orderBy: this.orderKey : this.orderDirection">
         <app-cart-item [cart]="item" (delete)="onDeleteItem($event)"></app-cart-item>
       </li>
     </ul>

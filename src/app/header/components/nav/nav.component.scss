@@ -2,23 +2,6 @@ $main-color: #6394f8;
 $light-text: #abb0be;
 $font-stack: Helvetica, sans-serif;
 
-*, *:before, *:after {
-  box-sizing: border-box;
-}
-
-// body {
-//   font: 14px/22px "Lato", Arial, sans-serif;
-//   background: #6394F8;
-// }
-
-// .lighter-text {
-//   color: #ABB0BE;
-// }
-
-// .main-color-text {
-//   color: $main-color;
-// }
-
 nav {
   padding: 0px 0px 50px 0px;
   background: #f8f8f8;
@@ -59,24 +42,7 @@ nav {
   position:fixed;
   top:0px;
   left: 0px;
-}
-
-.container {
-  margin: auto;
-  width: 80%;
-}
-
-.badge {
-  background-color: #6394f8;
-  border-radius: 10px;
-  color: white;
-  display: inline-block;
-  font-size: 12px;
-  line-height: 1;
-  padding: 3px 7px;
-  text-align: center;
-  vertical-align: middle;
-  white-space: nowrap;
+  z-index: 999;
 }
 
 .shopping-cart {
@@ -99,54 +65,11 @@ nav {
   }
 
   .shopping-cart-items {
-    padding-top: 20px;
-
-    li {
-      margin-bottom: 18px;
-    }
 
     img {
       float: left;
       margin-right: 12px;
-      width: 15%;
-    }
-
-    .item-name {
-      display: block;
-      padding-top: 10px;
-      font-size: 16px;
-    }
-
-    .item-price {
-      color: $main-color;
-      margin-right: 8px;
-    }
-
-    .item-quantity {
-      color: $light-text;
-    }
-
-    .myButton {
-      background: linear-gradient(to bottom, #6394f8 5%, #6394f8 100%);
-      background-color: #6394f8;
-      border-radius:3px;
-      display:inline-block;
-      cursor:pointer;
-      color:#ffffff;
-      font-family:Arial;
-      font-size:12px;
-      font-weight:bold;
-      padding:2px 3px;
-      text-decoration:none;
-      margin: 10px;
-    }
-    .myButton:hover {
-      background:linear-gradient(to bottom, #019ad2 5%, #33bdef 100%);
-      background-color:#019ad2;
-    }
-    .myButton:active {
-      position:relative;
-      top:1px;
+      width: 100%;
     }
   }
 }
@@ -186,10 +109,4 @@ nav {
   &:hover {
     background: lighten($main-color, 3%);
   }
-}
-
-.clearfix:after {
-  content: "";
-  display: table;
-  clear: both;
 }
