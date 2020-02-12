@@ -20,7 +20,8 @@ export class CartListComponent implements OnInit {
     return this.cartService.cartProducts;
   }
 
-  constructor(private cartService: CartService) { }
+  // сервис должен быть публичным, так как используется в шаблоне
+  constructor(public cartService: CartService) { }
 
   ngOnInit() {
   }

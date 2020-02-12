@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [CommonModule, SharedModule],
-  providers: [CartService],
+  // providers: [CartService], уже зарегистрирован через свой декоратор
   declarations: [BasketComponent, CartListComponent, CartItemComponent],
   exports: [BasketComponent, CartListComponent]
 })
