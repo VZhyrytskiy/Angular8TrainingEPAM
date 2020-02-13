@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { ConfigOptionsService } from './config-options.service';
 
 describe('ConfigOptionsService', () => {

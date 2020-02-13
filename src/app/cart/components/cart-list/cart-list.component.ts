@@ -1,5 +1,3 @@
-import { CartItem } from './../../models/cart.model';
-import { Product } from 'src/app/products/models/product.model';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 

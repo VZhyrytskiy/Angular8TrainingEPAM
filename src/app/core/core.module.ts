@@ -10,7 +10,7 @@ import { GeneratorService } from './services/generator.service';
   providers: [
     { provide: LocalStorageService, useClass: LocalStoreEngine },
     { provide: ConstantsService, useValue: { App: 'TaskManager', Ver: '1.0' } },
-    { provide: GeneratorService, useFactory: this.GeneratorService.GeneratorFactory(8) }
+    { provide: GeneratorService, useFactory: this.GeneratorService.generatorFactory(8) }
   ],
   imports: [
     CommonModule
