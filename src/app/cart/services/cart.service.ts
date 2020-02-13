@@ -6,7 +6,6 @@ import { Product } from 'src/app/products/models/product.model';
   providedIn: 'root'
 })
 export class CartService {
-  // постарайтесь приватные методы опустить ниже и собрать вместе, чтобы они не были разбросаны по классу
 
   cartProducts: Array<CartItem> = [];
   totalQuantity = 0;

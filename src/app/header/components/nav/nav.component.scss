@@ -34,60 +34,6 @@ nav {
   }
 }
 
-.back-cart{
-  width:100%;
-  min-height:100%;
-  background-color: rgba(0,0,0,0.5);
-  overflow:hidden;
-  position:fixed;
-  top:0px;
-  left: 0px;
-  z-index: 999;
-}
-
-.shopping-cart {
-  margin: 10px 0 0 -240px;
-  float: right;
-  background: #f3f3f3;
-  width: 320px;
-  position: absolute;
-  border-radius: 3px;
-  padding: 20px;
-  z-index: 1000;
-
-  .shopping-cart-header {
-    border-bottom: 1px solid #e8e8e8;
-    padding-bottom: 15px;
-
-    .shopping-cart-total {
-      float: right;
-    }
-  }
-
-  .shopping-cart-items {
-
-    img {
-      float: left;
-      margin-right: 12px;
-      width: 100%;
-    }
-  }
-}
-
-.shopping-cart:after {
-  bottom: 100%;
-  left: 89%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-  border-bottom-color: #d6d6d6;
-  border-width: 8px;
-  margin-left: -8px;
-}
-
 .cart-icon {
   color: #515783;
   font-size: 24px;

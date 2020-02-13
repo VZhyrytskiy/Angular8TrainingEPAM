@@ -7,7 +7,6 @@ import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [SharedModule],
-  // providers: [CartService], уже зарегистрирован через свой декоратор
   declarations: [BasketComponent, CartListComponent, CartItemComponent],
   exports: [BasketComponent, CartListComponent]
 })

@@ -3,16 +3,14 @@ import { CommonModule } from '@angular/common';
 import { LocalStorageService } from './services/local-storage.service';
 import { LocalStoreEngine } from './models/local-store-engine-class';
 import { ConstantsService } from './services/constants.service';
-import { GeneratorService, GeneratorFactory } from './services/generator.service';
-import { ConfigOptionsService } from './services/config-options.service';
+import { GeneratorService } from './services/generator.service';
 
 @NgModule({
   declarations: [],
   providers: [
-    // ConfigOptionsService, // он уже зарегистрирован через собственный декоратор
     { provide: LocalStorageService, useClass: LocalStoreEngine },
-    { provide: ConstantsService, useValue : { App: 'TaskManager', Ver: '1.0' } },
-    { provide: GeneratorService, useFactory: GeneratorFactory(8)}
+    { provide: ConstantsService, useValue: { App: 'TaskManager', Ver: '1.0' } },
+    { provide: GeneratorService, useFactory: this.GeneratorService.GeneratorFactory(8) }
   ],
   imports: [
     CommonModule

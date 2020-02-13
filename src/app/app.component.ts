@@ -1,13 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  // значение должно устанавливатся через доступ к шаблону с помощью декоратора и шаблонной переменной. задание ко второй теме
-  title = 'shop';
+export class AppComponent implements OnInit {
+  @ViewChild('title', { static: false })
+  title: ElementRef;
 
   constructor() { }
+
+  ngOnInit() {
+    this.title.nativeElement.textContent = 'Super-puper Shop';
+  }
 }

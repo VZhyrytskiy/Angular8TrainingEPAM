@@ -6,7 +6,7 @@ import { CartService } from '../../services/cart.service';
 @Component({
   selector: 'app-cart-list',
   templateUrl: './cart-list.component.html',
-  styleUrls: ['./cart-list.component.css']
+  styleUrls: ['./cart-list.component.scss']
 })
 export class CartListComponent implements OnInit {
   @Output() clickOut = new EventEmitter();
@@ -22,7 +22,6 @@ export class CartListComponent implements OnInit {
     return this.cartService.cartProducts;
   }
 
-  // сервис должен быть публичным, так как используется в шаблоне
   constructor(public cartService: CartService) { }
 
   ngOnInit() { }

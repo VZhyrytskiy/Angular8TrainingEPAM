@@ -19,4 +19,4 @@ import { SharedModule } from '../shared/shared.module';
     ProductListComponent
   ]
 })
-export class ComponentModule { } // почему вы его так назвали?
+export class ProductsModule { } // почему вы его так назвали?

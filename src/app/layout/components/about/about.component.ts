@@ -4,6 +4,7 @@ import { ConfigOptionsService } from '../../../core/services/config-options.serv
 import { ConstantsService } from 'src/app/core/services/constants.service';
 import { GeneratorService } from 'src/app/core/services/generator.service';
 
+
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
@@ -15,7 +16,7 @@ export class AboutComponent implements OnInit {
     @Optional() private localStorageServive: LocalStorageService,
     @Optional() private configOptionsService: ConfigOptionsService,
     @Optional() @Inject(ConstantsService) private constantsService: object,
-    @Optional() @Inject(GeneratorService) private generatorService: string
+    @Optional() @Inject(GeneratorService) private generatorService: object
   ) { }
 
   ngOnInit() {
