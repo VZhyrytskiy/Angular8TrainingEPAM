@@ -9,6 +9,7 @@ import { CartItem } from '../../models/cart.model';
 export class CartItemComponent implements OnInit {
   @Input() cart: CartItem;
   @Output() delete = new EventEmitter<number>();
+  @Output() add = new EventEmitter<number>();
 
   constructor() { }
 
@@ -17,6 +18,10 @@ export class CartItemComponent implements OnInit {
 
   onDelete(id: number) {
     this.delete.emit(id);
+  }
+
+  onAdd(id: number) {
+    this.add.emit(id);
   }
 
 }

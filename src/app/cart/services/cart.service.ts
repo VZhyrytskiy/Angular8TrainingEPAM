@@ -14,28 +14,47 @@ export class CartService {
 
   constructor() { }
 
-  private mapProductToCart(product: Product, count: number): CartItem {
-    return {
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      count,
-      img: product.img
-    };
+  addCartById(id: number): void {
+    this.getCartById(id).count++;
+    this.updateCartData();
   }
 
-  private getCartById(id: number): CartItem {
-    return this.cartProducts.find(item => item.id === id);
+  removeProduct(id: number): void {
+    if (!this.decreaseQuantity(id)) {
+      const index = this.getIndexProductById(id);
+      this.cartProducts.splice(index, 1);
+    }
+    this.updateCartData();
   }
 
-  private getIndexProductById(id: number): number {
-    return this.cartProducts.findIndex(item => item.id === id);
+  removeAllProducts(): void {
+    this.cartProducts = [];
+    this.updateCartData();
   }
 
   addProduct(product: Product): void {
     const cart = this.mapProductToCart(product, 1);
     this.addCart(cart);
     this.updateCartData();
+  }
+
+  getSum(): number {
+    let sum = 0;
+    this.cartProducts.forEach(item => sum = sum + item.count * item.price);
+    return sum;
+  }
+
+  getCount(): number {
+    return this.cartProducts.length;
+  }
+
+  clearCart(): void {
+    this.cartProducts = [];
+    this.updateCartData();
+  }
+
+  private getIndexProductById(id: number): number {
+    return this.cartProducts.findIndex(item => item.id === id);
   }
 
   private addCart(cart: CartItem): void {
@@ -63,32 +82,23 @@ export class CartService {
     return false;
   }
 
-  removeProduct(id: number): void {
-    if (!this.decreaseQuantity(id)) {
-      const index = this.getIndexProductById(id);
-      this.cartProducts.splice(index, 1);
-    }
-    this.updateCartData();
+  private mapProductToCart(product: Product, count: number): CartItem {
+    return {
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      count,
+      img: product.img
+    };
   }
 
-  removeAllProducts(): void {
-    this.cartProducts = [];
-    this.updateCartData();
+  private getCartById(id: number): CartItem {
+    return this.cartProducts.find(item => item.id === id);
   }
 
   private updateCartData(): void {
     this.totalQuantity = this.getCount();
     this.totalSum = this.getSumCount();
-  }
-
-  getSum(): number {
-    let sum = 0;
-    this.cartProducts.forEach(item => sum = sum + item.count * item.price);
-    return sum;
-  }
-
-  getCount(): number {
-    return this.cartProducts.length;
   }
 
   private getSumCount(): number {

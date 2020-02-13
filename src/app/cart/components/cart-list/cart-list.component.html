@@ -11,7 +11,7 @@
     <div class="cart-list-seting">
       <div class="row">
         <div class="col-8">
-          <select class="custom-select custom-select-sm">
+          <select class="custom-select custom-select-sm" (change)="onSortChange($event.target.value)">
             <option selected>none</option>
             <option value="price">By Price</option>
             <option value="name">By Name</option>
@@ -20,7 +20,7 @@
         </div>
         <div class="col-4 cart-list-toggle">
           <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1">
+            <input type="checkbox" class="custom-control-input" id="customSwitch1" (change)="onDirectionCahnge()">
             <label class="custom-control-label cart-list-label" for="customSwitch1">desc</label>
           </div>
         </div>
@@ -28,9 +28,9 @@
     </div>
     <ul class="shopping-cart-items">
       <li *ngFor="let item of carts | orderBy: this.orderKey : this.orderDirection">
-        <app-cart-item [cart]="item" (delete)="onDeleteItem($event)"></app-cart-item>
+        <app-cart-item [cart]="item" (delete)="onDeleteItem($event)" (add)="onAddItem($event)"></app-cart-item>
       </li>
     </ul>
-    <a href="#" class="button">Checkout</a>
+    <button type="button" class="btn btn-secondary btn-lg btn-block btn-sm custombutton" (click)="clearCart()">Clear cart</button>
   </div>
 </div>

@@ -1,3 +1,5 @@
+import { CartItem } from './../../models/cart.model';
+import { Product } from 'src/app/products/models/product.model';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 
@@ -23,8 +25,7 @@ export class CartListComponent implements OnInit {
   // сервис должен быть публичным, так как используется в шаблоне
   constructor(public cartService: CartService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   onCange(e) {
     this.clickOut.emit(e);
@@ -34,8 +35,19 @@ export class CartListComponent implements OnInit {
     this.cartService.removeProduct(id);
   }
 
-  onSortChange(event) {
-    this.orderKey = event.target.value;
+  onAddItem(id: number) {
+    this.cartService.addCartById(id);
+  }
+
+  clearCart() {
+    this.cartService.clearCart();
+  }
+
+  onDirectionCahnge() {
     this.orderDirection = !this.orderDirection;
+  }
+
+  onSortChange(key: string) {
+    this.orderKey = key;
   }
 }

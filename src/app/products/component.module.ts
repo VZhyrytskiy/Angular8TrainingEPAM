@@ -19,4 +19,4 @@ import { CommonModule } from '@angular/common';
         ProductListComponent
     ]
 })
-export class ComponentModule {} // почему вы его так назвали? 
+export class ComponentModule {} // почему вы его так назвали?
