@@ -1,17 +1,19 @@
-import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('title', { static: false })
-  title: ElementRef;
+  titleEl: ElementRef;
 
   constructor() { }
 
-  ngOnInit() {
-    this.title.nativeElement.textContent = 'Super-puper Shop';
+  ngOnInit() { }
+
+  ngAfterViewInit() {
+    this.titleEl.nativeElement.textContent = 'Super-puper Shop';
   }
 }

@@ -1,3 +1,4 @@
+import { ProductsRoutingModule } from './products-routing.module';
 import { NgModule } from '@angular/core';
 import { FirstComponent } from './components/first/first.component';
 import { ProductComponent } from './components/product/product.component';
@@ -8,7 +9,8 @@ import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
-    SharedModule
+    SharedModule,
+    ProductsRoutingModule
   ],
   declarations: [
     FirstComponent,
@@ -19,4 +21,4 @@ import { SharedModule } from '../shared/shared.module';
     ProductListComponent
   ]
 })
-export class ProductsModule { } // почему вы его так назвали?
+export class ProductsModule { }

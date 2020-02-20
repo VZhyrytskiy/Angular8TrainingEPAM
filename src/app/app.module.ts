@@ -1,3 +1,5 @@
+import { LayoutModule } from './layout/layout.module';
+import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -13,7 +15,10 @@ import { NavModule } from './header/nav.module';
     BrowserModule,
     ProductsModule,
     NavModule,
-    SharedModule
+    SharedModule,
+    LayoutModule,
+    // MUST BE LAST
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
