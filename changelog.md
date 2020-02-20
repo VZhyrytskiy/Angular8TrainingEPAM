@@ -156,3 +156,4 @@
 1. Список товаров (по аналогии TaskFeature Area)
     /products-list
     ...
+
