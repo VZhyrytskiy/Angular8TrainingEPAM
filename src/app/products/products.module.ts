@@ -4,6 +4,7 @@ import { FirstComponent } from './components/first/first.component';
 import { ProductComponent } from './components/product/product.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { SharedModule } from '../shared/shared.module';
+import { ViewProductComponent } from './components/view-product/view-product.component';
 
 
 
@@ -15,9 +16,11 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     FirstComponent,
     ProductComponent,
-    ProductListComponent
+    ProductListComponent,
+    ViewProductComponent
   ],
   exports: [
+    ProductComponent,
     ProductListComponent
   ]
 })

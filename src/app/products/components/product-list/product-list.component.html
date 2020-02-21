@@ -1,5 +1,11 @@
 <div class="box">
   <div *ngFor="let product of products | async">
-    <app-product [product]="product" (addProduct)="addProduct($event)"></app-product>
+    <app-product
+      [product]="product"
+      (addProduct)="addProduct($event)"
+      (viewProduct)="onViewProduct($event)"
+    >
+    </app-product>
   </div>
+  <router-outlet></router-outlet>
 </div>

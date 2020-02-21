@@ -16,7 +16,7 @@ export class ProductsService {
     });
   }
 
-  getProductById(id: number) {
-    return Data.find(item => item.id === id);
+  async getProductById(id: number | string) {
+    return Data.find(item => item.id === +id);
   }
 }
