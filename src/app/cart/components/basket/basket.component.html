@@ -1,9 +1,9 @@
 <ul class="navbar-right">
   <li>
-    <a href="#" id="cart" (click)="onCartClick($event)"
-      ><i class="fa fa-shopping-cart"></i> Cart
-      <span class="badge-label">{{productsCount}}</span>
+    <a [routerLink]="[{outlets: {cart: ['cart']}}]">
+      <i class="fa fa-shopping-cart"></i> Cart
+      <span class="badge-label">{{ productsCount }}</span>
     </a>
   </li>
-  <app-cart-list *ngIf="showCartList" (clickOut)="onCartClick()"></app-cart-list>
+  <router-outlet name="cart"></router-outlet>
 </ul>

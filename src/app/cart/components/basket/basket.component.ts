@@ -16,8 +16,4 @@ export class BasketComponent implements OnInit {
   constructor(private cartService: CartService) { }
 
   ngOnInit() { }
-
-  onCartClick($event) {
-    this.showCartList = !this.showCartList;
-  }
 }

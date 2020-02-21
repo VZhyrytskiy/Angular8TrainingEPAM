@@ -43,7 +43,7 @@ export class ViewProductComponent implements OnInit {
     $('#productModal').modal('toggle');
     $('#productModal').on('hidden.bs.modal', (e) => {
       this.onGoBack();
-    })
+    });
   }
 
 }

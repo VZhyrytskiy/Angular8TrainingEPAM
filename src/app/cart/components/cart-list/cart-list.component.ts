@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 
@@ -20,12 +21,12 @@ export class CartListComponent implements OnInit {
     return this.cartService.cartProducts;
   }
 
-  constructor(public cartService: CartService) { }
+  constructor(public cartService: CartService, private router: Router) { }
 
   ngOnInit() { }
 
   onCange(e) {
-    this.clickOut.emit(e);
+    this.router.navigate([{ outlets: { cart: null } }]);
   }
 
   onDeleteItem(id: number) {
