@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { UserModel } from './../models/user.model';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   formSignIn: FormGroup;
   user: UserModel;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.formSignIn = new FormGroup({
@@ -38,5 +39,8 @@ export class LoginComponent implements OnInit {
     const user = { email, password };
 
     this.userService.signIn(user, formData.isRemember);
+    if (this.userService.isAutorize) {
+      this.router.navigate(['/home']);
+    }
   }
 }

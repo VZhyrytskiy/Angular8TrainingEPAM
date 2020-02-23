@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/admin/services/user.service';
 
@@ -8,12 +9,16 @@ import { UserService } from 'src/app/admin/services/user.service';
 })
 export class NavComponent implements OnInit {
 
-  constructor(public userService: UserService) { }
+  constructor(public userService: UserService, private router: Router) { }
 
   ngOnInit() { }
 
   clickLogOut() {
-    this.userService.logOut();
+    if (this.userService.isAutorize) {
+      this.userService.logOut();
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 
 }
