@@ -19,9 +19,7 @@ export class ViewProductComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private productsService: ProductsService,
-  ) { }
-
-  ngOnInit(): void {
+  ) {
     const observer = {
       next: (product: Product) => {
         this.product = { ...product };
@@ -34,6 +32,8 @@ export class ViewProductComponent implements OnInit {
         switchMap((params: ParamMap) => this.productsService.getProductById(+params.get('productID'))))
       .subscribe(observer);
   }
+
+  ngOnInit() { }
 
   onGoBack(): void {
     this.router.navigate(['/home']);

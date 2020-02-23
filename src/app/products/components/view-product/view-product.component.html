@@ -12,7 +12,7 @@
         <h5 class="modal-title" id="productModalLabel">{{ product.name }}</h5>
         <button
           type="button"
-          class="close"
+          class="close btn-sm"
           data-dismiss="modal"
           aria-label="Close"
         >
@@ -36,17 +36,21 @@
           <div class="row">
             <span
               [ngClass]="
-                this.product.isAvailable
+              product.isAvailable
                   ? 'badge badge-pill badge-primary'
                   : 'badge badge-pill badge-secondary'
               "
-              >{{ this.product.isAvailable ? "in stock" : "order" }}</span
-            >
+              >{{ product.isAvailable ? "in stock" : "order" }}
+            </span>
           </div>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm"
+          data-dismiss="modal"
+        >
           Close
         </button>
       </div>

@@ -1,8 +1,9 @@
-<nav appChangeColor="red">
+<nav appChangeColor="AliceBlue">
   <div class="container">
     <ul class="navbar-left">
-      <li><a href="#">Home</a></li>
-     <li><a href="#about">About</a></li>
+      <li><a [routerLink]="['/home']">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a [routerLink]="['/order']">Order</a></li>
     </ul>
     <app-basket></app-basket>
   </div>

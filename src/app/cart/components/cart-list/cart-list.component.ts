@@ -25,7 +25,7 @@ export class CartListComponent implements OnInit {
 
   ngOnInit() { }
 
-  onCange(e) {
+  onClose() {
     this.router.navigate([{ outlets: { cart: null } }]);
   }
 
@@ -47,5 +47,11 @@ export class CartListComponent implements OnInit {
 
   onSortChange(key: string) {
     this.orderKey = key;
+  }
+
+  order() {
+    this.router.navigate(['order']).then(() => {
+      this.onClose();
+    });
   }
 }

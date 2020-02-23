@@ -1,4 +1,4 @@
-<div class="back-cart" (click)="onCange($event)"></div>
+<div class="back-cart" (click)="onClose($event)"></div>
 <div class="container">
   <div id="shopping-cart" class="shopping-cart">
     <div class="shopping-cart-header">
@@ -32,5 +32,6 @@
       </li>
     </ul>
     <button type="button" class="btn btn-secondary btn-lg btn-block btn-sm custombutton" (click)="clearCart()">Clear cart</button>
+    <button type="button" class="btn btn-success btn-lg btn-block btn-sm custombutton" [disabled]="carts.length === 0" (click)="order()">Create order</button>
   </div>
 </div>

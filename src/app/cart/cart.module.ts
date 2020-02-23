@@ -7,8 +7,20 @@ import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
-  imports: [SharedModule, CartRoutingModule],
-  declarations: [BasketComponent, CartListComponent, CartItemComponent],
-  exports: [BasketComponent, CartListComponent]
+  imports: [
+    SharedModule,
+    CartRoutingModule
+  ],
+  declarations:
+    [
+      BasketComponent,
+      CartListComponent,
+      CartItemComponent
+    ],
+  exports: [
+    BasketComponent,
+    CartListComponent,
+    CartItemComponent
+  ]
 })
 export class CartModule { }
