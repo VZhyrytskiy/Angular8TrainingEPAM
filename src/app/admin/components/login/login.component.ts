@@ -1,4 +1,7 @@
+import { UserModel } from './../models/user.model';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { UserService } from 'src/app/admin/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  formSignIn: FormGroup;
+  user: UserModel;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+    this.formSignIn = new FormGroup({
+      email: new FormControl(''),
+      password: new FormControl(''),
+      isRemember: new FormControl('')
+    });
   }
 
+  clickSignIn() {
+    const formData = { ...this.formSignIn.value } as UserModel;
+  }
+
+  onSubmit() {
+    const formData = { ...this.formSignIn.value };
+
+    if (!formData.email || !formData.password) {
+      return;
+    }
+
+    const { email, password } = formData;
+    const user = { email, password };
+
+    this.userService.signIn(user, formData.isRemember);
+  }
 }

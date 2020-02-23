@@ -6,5 +6,13 @@
       <li><a [routerLink]="['/order']">Order</a></li>
     </ul>
     <app-basket></app-basket>
+    <button
+      type="button"
+      class="btn btn-sm signin"
+      [ngClass]="{ 'btn-primary': !userService.isAutorize }"
+      (click)="clickLogOut()"
+    >
+      {{ userService.isAutorize ? userService.user.email : "Sign In" }}
+    </button>
   </div>
 </nav>

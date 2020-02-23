@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/admin/services/user.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,8 +8,12 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  constructor(public userService: UserService) { }
 
   ngOnInit() { }
+
+  clickLogOut() {
+    this.userService.logOut();
+  }
 
 }

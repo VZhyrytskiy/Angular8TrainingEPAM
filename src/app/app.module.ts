@@ -8,6 +8,7 @@ import { ProductsModule } from './products/products.module';
 import { NavModule } from './header/nav.module';
 import { OrderModule } from './order/order.module';
 import { AdminModule } from './admin/admin.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
