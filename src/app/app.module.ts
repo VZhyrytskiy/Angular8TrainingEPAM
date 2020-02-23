@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { ProductsModule } from './products/products.module';
 import { NavModule } from './header/nav.module';
 import { OrderModule } from './order/order.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { OrderModule } from './order/order.module';
     SharedModule,
     LayoutModule,
     OrderModule,
+    AdminModule,
     // MUST BE LAST
     AppRoutingModule,
   ],
