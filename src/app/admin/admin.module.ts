@@ -4,11 +4,12 @@ import {
   AdminMainComponent,
   AdminProductsComponent,
   AdminAddProductComponent,
-  AdminEditdProductComponent,
+  AdminEditProductComponent,
   LoginComponent
 } from './components';
 import { AdminRoutingModule } from './admin-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminOrdersComponent } from './components/admin-orders/admin-orders.component';
 
 
 
@@ -17,8 +18,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AdminMainComponent,
     AdminProductsComponent,
     AdminAddProductComponent,
-    AdminEditdProductComponent,
-    LoginComponent
+    AdminEditProductComponent,
+    LoginComponent,
+    AdminOrdersComponent
   ],
   imports: [
     CommonModule,
