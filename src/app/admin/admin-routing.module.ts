@@ -1,3 +1,4 @@
+import { AdminEditProductComponent } from './components/admin-edit-product/admin-edit-product.component';
 import { AdminOrdersComponent } from './components/admin-orders/admin-orders.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -17,8 +18,8 @@ const routes: Routes = [
             component: AdminAddProductComponent
           },
           {
-            path: 'edit:productID',
-            component: AdminAddProductComponent
+            path: 'edit/:productID',
+            component: AdminEditProductComponent
           }
         ]
       },

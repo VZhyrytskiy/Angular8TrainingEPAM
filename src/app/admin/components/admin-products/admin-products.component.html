@@ -1,1 +1,33 @@
-<p>Products work!</p>
+<div class="row d-flex justify-content-center container">
+  <div class="col-md-12">
+    <div class="card-hover-shadow-2x mb-3 card">
+      <div class="card-header-tab card-header">
+        <div class="d-flex justify-content-between">
+          <div class="flex-fill header-item0"></div>
+          <div class="p-2 bg-warning flex-fill header-item1">Name</div>
+          <div class="p-2 bg-warning flex-fill header-item2">Description</div>
+          <div class="p-2 bg-warning flex-fill header-item3">Category</div>
+          <div class="p-2 bg-warning flex-fill header-item4">Count</div>
+          <div class="p-2 bg-warning flex-fill header-item5">Price</div>
+          <div class="p-2 bg-warning flex-fill header-item6">Action</div>
+        </div>
+      </div>
+      <div class="scroll-area-sm">
+        <div style="position: static;" class="ps ps--active-y">
+          <div class="ps-content">
+            <ul class=" list-group list-group-flush">
+              <li class="list-group-item" *ngFor="let item of products | async">
+                <app-ploduct-item [product]="item" (editProduct)="onEdit($event)" (deleteProduct)="onDelete($event)" ></app-ploduct-item>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="d-block text-right card-footer">
+        <button class="mr-2 btn btn-link btn-sm">Cancel</button
+        ><button class="btn btn-primary">Add Task</button>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

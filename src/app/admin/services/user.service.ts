@@ -20,7 +20,7 @@ export class UserService {
         return user ? user.email : null;
       })
       .then(this.readUserLocalOptionsStorage)
-      .then((options) => { this.userOptions = options as UserOptions; })
+      .then((options) => { this.userOptions = options as UserOptions; });
   }
 
   signIn(user: UserModel, remember: boolean) {
@@ -33,7 +33,7 @@ export class UserService {
     this.isAutorize = true;
   }
 
-  logOut(){
+  logOut() {
     this.user = null;
     this.isAutorize = false;
   }

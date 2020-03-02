@@ -11,6 +11,7 @@ export let Data: Array<Product> = [
     description: 'Shirt1',
     price: 10.99,
     category: Category.shirts,
+    count: 10,
     sex: Sex.man
   },
   {
@@ -21,6 +22,7 @@ export let Data: Array<Product> = [
     description: '4564303',
     price: 15.99,
     category: Category.shirts,
+    count: 10,
     sex: Sex.man
   },
   {
@@ -31,6 +33,7 @@ export let Data: Array<Product> = [
     description: '5047597',
     price: 17.99,
     category: Category.shirts,
+    count: 10,
     sex: Sex.man
   },
   {
@@ -41,6 +44,7 @@ export let Data: Array<Product> = [
     description: '6478493',
     price: 23.21,
     category: Category.shirts,
+    count: 10,
     sex: Sex.man
   },
   {
@@ -51,6 +55,7 @@ export let Data: Array<Product> = [
     description: '6478493',
     price: 50.99,
     category: Category.shirts,
+    count: 10,
     sex: Sex.man
   },
   {
@@ -61,6 +66,7 @@ export let Data: Array<Product> = [
     description: '9659178',
     price: 33.99,
     category: Category.shirts,
+    count: 10,
     sex: Sex.man
   },
   {
@@ -71,6 +77,7 @@ export let Data: Array<Product> = [
     description: '6372943',
     price: 41.77,
     category: Category.shirts,
+    count: 10,
     sex: Sex.woman
   },
   {
@@ -81,6 +88,7 @@ export let Data: Array<Product> = [
     description: '6548945',
     price: 22.99,
     category: Category.shirts,
+    count: 10,
     sex: Sex.woman
   },
   {
@@ -91,6 +99,7 @@ export let Data: Array<Product> = [
     description: '6824190',
     price: 26.99,
     category: Category.shirts,
+    count: 10,
     sex: Sex.woman
   },
   {
@@ -101,6 +110,7 @@ export let Data: Array<Product> = [
     description: '5170406',
     price: 49.99,
     category: Category.shirts,
+    count: 10,
     sex: Sex.woman
   },
   {
@@ -111,6 +121,7 @@ export let Data: Array<Product> = [
     description: 'Pant1',
     price: 19.99,
     category: Category.pants,
+    count: 10,
     sex: Sex.woman
   },
   {
@@ -121,6 +132,7 @@ export let Data: Array<Product> = [
     description: 'Shoes1',
     price: 43.89,
     category: Category.shoes,
+    count: 10,
     sex: Sex.man
   },
   {
@@ -131,6 +143,7 @@ export let Data: Array<Product> = [
     description: 'Addidas 10777422-1',
     price: 77.89,
     category: Category.shoes,
+    count: 10,
     sex: Sex.man
   },
   {
@@ -141,6 +154,7 @@ export let Data: Array<Product> = [
     description: 'Addidas 10200449',
     price: 98.09,
     category: Category.shoes,
+    count: 10,
     sex: Sex.man
   },
   {
@@ -151,6 +165,7 @@ export let Data: Array<Product> = [
     description: 'Addidas 10520169',
     price: 88.89,
     category: Category.shoes,
+    count: 10,
     sex: Sex.man
   },
   {
@@ -161,6 +176,7 @@ export let Data: Array<Product> = [
     description: 'Socks1',
     price: 11.12,
     category: Category.socks,
+    count: 10,
     sex: Sex.man
   },
   {
@@ -171,6 +187,7 @@ export let Data: Array<Product> = [
     description: '4598367',
     price: 9.15,
     category: Category.socks,
+    count: 10,
     sex: Sex.unisex
   },
   {
@@ -181,6 +198,7 @@ export let Data: Array<Product> = [
     description: '6463874',
     price: 8.52,
     category: Category.socks,
+    count: 10,
     sex: Sex.unisex
   },
   {
@@ -191,6 +209,7 @@ export let Data: Array<Product> = [
     description: '6798696',
     price: 11.12,
     category: Category.socks,
+    count: 10,
     sex: Sex.man
   },
   {
@@ -201,6 +220,7 @@ export let Data: Array<Product> = [
     description: '8689117',
     price: 11.55,
     category: Category.socks,
+    count: 10,
     sex: Sex.man
   },
   {
@@ -211,6 +231,7 @@ export let Data: Array<Product> = [
     description: '10699920',
     price: 5.55,
     category: Category.socks,
+    count: 10,
     sex: Sex.woman
   },
   {
@@ -221,6 +242,7 @@ export let Data: Array<Product> = [
     description: '10699929',
     price: 7.99,
     category: Category.socks,
+    count: 10,
     sex: Sex.unisex
   },
   {
@@ -231,6 +253,7 @@ export let Data: Array<Product> = [
     description: 'Suit1',
     price: 29.99,
     category: Category.suits,
+    count: 10,
     sex: Sex.man
   },
   {
@@ -241,6 +264,7 @@ export let Data: Array<Product> = [
     description: '9881835',
     price: 48.40,
     category: Category.suits,
+    count: 10,
     sex: Sex.woman
   },
   {
@@ -251,6 +275,7 @@ export let Data: Array<Product> = [
     description: '9883277',
     price: 58.30,
     category: Category.suits,
+    count: 10,
     sex: Sex.woman
   },
   {
@@ -261,6 +286,7 @@ export let Data: Array<Product> = [
     description: '9443496',
     price: 89.20,
     category: Category.suits,
+    count: 10,
     sex: Sex.woman
   },
   {
@@ -271,6 +297,7 @@ export let Data: Array<Product> = [
     description: '10392472',
     price: 90.10,
     category: Category.suits,
+    count: 10,
     sex: Sex.man
   },
   {
@@ -281,6 +308,7 @@ export let Data: Array<Product> = [
     description: '10871570',
     price: 57.10,
     category: Category.suits,
+    count: 10,
     sex: Sex.man
   },
   {
@@ -291,6 +319,7 @@ export let Data: Array<Product> = [
     description: '8810958',
     price: 39.99,
     category: Category.suits,
+    count: 10,
     sex: Sex.man
   },
   {
@@ -301,6 +330,7 @@ export let Data: Array<Product> = [
     description: '8699776',
     price: 87.99,
     category: Category.suits,
+    count: 10,
     sex: Sex.man
   },
   {
@@ -311,6 +341,7 @@ export let Data: Array<Product> = [
     description: '6957732',
     price: 78.99,
     category: Category.suits,
+    count: 10,
     sex: Sex.man
   }
 ];

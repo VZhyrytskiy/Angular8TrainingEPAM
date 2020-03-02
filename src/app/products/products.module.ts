@@ -20,6 +20,7 @@ import { ViewProductComponent } from './components/view-product/view-product.com
     ViewProductComponent
   ],
   exports: [
+    FirstComponent,
     ProductComponent,
     ProductListComponent
   ]
