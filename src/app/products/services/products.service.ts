@@ -38,7 +38,34 @@ export class ProductsService {
     this.streamProducts$.next(this.productsData);
   }
 
-  addProduct(item: Product) {
-    this.productsData = [...this.productsData, item];
+  addOrEditProduct(item: Product) {
+    const index = this.productsData.findIndex(prod => prod.id === item.id);
+
+    if (index > -1) {
+      this.productsData[index] = item;
+    } else {
+      this.productsData = [...this.productsData, item];
+    }
+
+    this.streamProducts$.next(this.productsData);
+  }
+
+  getID(): number {
+    let id = Math.max(...this.productsData.map(item => item.id));
+    return ++id;
+  }
+
+  getEmptyProduct(): Product {
+    return {
+      id: this.getID(),
+      isAvailable: false,
+      img: 'assets/img/inf.jpg',
+      name: 'New Product',
+      description: '',
+      price: 0,
+      category: '',
+      count: 0,
+      sex: undefined
+    };
   }
 }

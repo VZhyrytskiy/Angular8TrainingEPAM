@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import {
   AdminMainComponent,
   AdminProductsComponent,
-  AdminAddProductComponent,
   AdminEditProductComponent,
   LoginComponent
 } from './components';
@@ -17,7 +16,6 @@ import { PloductItemComponent } from './components/ploduct-item/ploduct-item.com
   declarations: [
     AdminMainComponent,
     AdminProductsComponent,
-    AdminAddProductComponent,
     AdminEditProductComponent,
     LoginComponent,
     AdminOrdersComponent,

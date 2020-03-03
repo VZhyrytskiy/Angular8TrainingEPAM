@@ -30,6 +30,10 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   ngOnInit() {
   }
 
+  addProduct() {
+    this.router.navigate(['/admin', 'products', 'add']);
+  }
+
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }

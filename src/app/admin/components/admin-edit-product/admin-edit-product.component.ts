@@ -1,9 +1,10 @@
 import { FormGroup, FormControl } from '@angular/forms';
 import { Product } from './../../../products/models/product.model';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductsService } from 'src/app/products/services/products.service';
 import { switchMap } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 declare var $: any;
 @Component({
@@ -11,29 +12,39 @@ declare var $: any;
   templateUrl: './admin-edit-product.component.html',
   styleUrls: ['./admin-edit-product.component.css']
 })
-export class AdminEditProductComponent implements OnInit {
+export class AdminEditProductComponent implements OnInit, OnDestroy {
   product: Product;
   formEditProduct: FormGroup;
+  sub: Subscription = new Subscription();
+  id: number;
 
   constructor(private router: Router, private route: ActivatedRoute, private productsService: ProductsService) {
-    const observer = {
-      next: (product: Product) => {
-        this.product = { ...product };
-        this.open();
-      },
-      error: (err: any) => console.log(err)
-    };
 
-    this.route.paramMap
-      .pipe(
-        switchMap((params: ParamMap) => this.productsService.getProductById(+params.get('productID'))))
-      .subscribe(observer);
+    const route$ = route.params.subscribe(params => this.id = +params.productID);
+    this.sub.add(route$);
+
+    if (this.id) {
+      const observer = {
+        next: (product: Product) => {
+          this.product = { ...product };
+        },
+        error: (err: any) => console.log(err)
+      };
+
+      const product$ = this.route.paramMap
+        .pipe(
+          switchMap((params: ParamMap) => this.productsService.getProductById(+params.get('productID'))))
+        .subscribe(observer);
+
+      this.sub.add(product$);
+    } else {
+      this.product = this.productsService.getEmptyProduct();
+    }
   }
 
   ngOnInit() {
     this.formEditProduct = new FormGroup({
       isAvailable: new FormControl(),
-      img: new FormControl(),
       name: new FormControl(),
       description: new FormControl(),
       category: new FormControl(),
@@ -41,24 +52,30 @@ export class AdminEditProductComponent implements OnInit {
       price: new FormControl(),
       sex: new FormControl(),
     });
+    this.open();
   }
 
   onSubmit() {
     const id = this.product.id;
     const formData = { id, ...this.formEditProduct.value };
+
+    formData.img = this.product.img;
+
     if (Object.values(formData).some(item => !item)) {
       return;
     }
 
-    const { email, password } = formData;
-    const user = { email, password };
-
-    this.productsService.addProduct(formData as Product);
+    this.productsService.addOrEditProduct(formData as Product);
+    $('#editModal').modal('toggle');
     this.onGoBack();
   }
 
   onGoBack(): void {
     this.router.navigate(['/admin/products']);
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 
   private open() {
