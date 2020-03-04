@@ -1,6 +1,9 @@
+import { OrderModel } from './models/order.model';
+import { LocalStorageService } from './../core/services/local-storage.service';
 import { CartService } from './../cart/services/cart.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { localStoragekeyOrder } from '../shared/consts';
 
 declare var $: any;
 
@@ -17,15 +20,15 @@ export class OrderComponent implements OnInit {
     return this.cartService.getSum();
   }
 
-  constructor(public cartService: CartService) { }
+  constructor(public cartService: CartService, private localStorageService: LocalStorageService) { }
 
   ngOnInit() {
     this.formOrder = new FormGroup({
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      email: new FormControl(''),
-      address: new FormControl(''),
-      phone: new FormControl('')
+      firstName: new FormControl(),
+      lastName: new FormControl(),
+      email: new FormControl(),
+      address: new FormControl(),
+      phone: new FormControl()
     });
   }
 
@@ -38,8 +41,13 @@ export class OrderComponent implements OnInit {
   }
 
   onSubmit() {
-    const formData = { ...this.formOrder.value };
-    console.log(formData);
+    const dataOrder = new Date();
+    const totalSum = this.sum;
+    const formData: OrderModel = { ...this.formOrder.value, dataOrder, totalSum };
+    const loadOrders = this.localStorageService.getItem(localStoragekeyOrder) || [];
+    const orders = [...loadOrders, formData];
+    this.localStorageService.setItem(localStoragekeyOrder, orders);
+    console.log(orders);
   }
 
 }

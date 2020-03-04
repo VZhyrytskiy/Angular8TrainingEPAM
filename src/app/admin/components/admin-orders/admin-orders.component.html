@@ -1,1 +1,25 @@
-<p>admin-orders works!</p>
+<p>List Orders</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">firstName</th>
+      <th scope="col">lastName</th>
+      <th scope="col">email</th>
+      <th scope="col">address</th>
+      <th scope="col">phone</th>
+      <th scope="col">totalSum</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item; index as i; of: orders">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ item.firstName }}</td>
+      <td>{{ item.lastName }}</td>
+      <td>{{ item.email }}</td>
+      <td>{{ item.address }}</td>
+      <td>{{ item.phone }}</td>
+      <td>{{ item.totalSum }}</td>
+    </tr>
+  </tbody>
+</table>

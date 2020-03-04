@@ -1,3 +1,6 @@
+import { localStoragekeyOrder } from './../../../shared/consts';
+import { OrderModel } from './../../../order/models/order.model';
+import { LocalStorageService } from './../../../core/services/local-storage.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminOrdersComponent implements OnInit {
 
-  constructor() { }
+  orders: Array<OrderModel>;
+
+  constructor(private localStorageService: LocalStorageService) {
+    this.orders = this.localStorageService.getItem(localStoragekeyOrder) || [];
+  }
+
 
   ngOnInit() {
   }
