@@ -18,6 +18,17 @@ export class AdminEditProductComponent implements OnInit, OnDestroy {
   sub: Subscription = new Subscription();
   id: number;
 
+  private controls = {
+    isAvailable: new FormControl(),
+    name: new FormControl(),
+    description: new FormControl(),
+    category: new FormControl(),
+    count: new FormControl(),
+    price: new FormControl(),
+    sex: new FormControl(),
+  };
+
+
   constructor(private router: Router, private route: ActivatedRoute, private productsService: ProductsService) {
 
     const route$ = route.params.subscribe(params => this.id = +params.productID);
@@ -43,16 +54,19 @@ export class AdminEditProductComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.formEditProduct = new FormGroup({
-      isAvailable: new FormControl(),
-      name: new FormControl(),
-      description: new FormControl(),
-      category: new FormControl(),
-      count: new FormControl(),
-      price: new FormControl(),
-      sex: new FormControl(),
-    });
+    this.formEditProduct = new FormGroup(this.controls);
+    this.setForm(this.product);
     this.open();
+  }
+
+  setForm(product: Product): void {
+    this.controls.isAvailable.setValue(product.isAvailable);
+    this.controls.name.setValue(product.name);
+    this.controls.description.setValue(product.description);
+    this.controls.category.setValue(product.category);
+    this.controls.count.setValue(product.count);
+    this.controls.price.setValue(product.price);
+    this.controls.sex.setValue(product.sex);
   }
 
   onSubmit() {
@@ -61,16 +75,16 @@ export class AdminEditProductComponent implements OnInit, OnDestroy {
 
     formData.img = this.product.img;
 
-    if (Object.values(formData).some(item => !item)) {
+    if (Object.values(formData).some(item => item === null)) {
       return;
     }
 
     this.productsService.addOrEditProduct(formData as Product);
-    $('#editModal').modal('toggle');
     this.onGoBack();
   }
 
   onGoBack(): void {
+    $('#editModal').modal('toggle');
     this.router.navigate(['/admin/products']);
   }
 
