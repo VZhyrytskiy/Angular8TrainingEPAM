@@ -80,11 +80,15 @@ export class AdminEditProductComponent implements OnInit, OnDestroy {
     }
 
     this.productsService.addOrEditProduct(formData as Product);
+    this.onClose();
+  }
+
+  onClose(): void {
+    $('#editModal').modal('toggle');
     this.onGoBack();
   }
 
   onGoBack(): void {
-    $('#editModal').modal('toggle');
     this.router.navigate(['/admin/products']);
   }
 
