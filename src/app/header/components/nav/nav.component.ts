@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/admin/services/user.service';
+import { UserService } from 'src/app/login/services/user.service';
 
 @Component({
   selector: 'app-nav',

@@ -1,7 +1,8 @@
-import { LocalStorageService } from './../../core/services/local-storage.service';
-import { UserOptions } from './../../core/models/user-options';
+import { Router } from '@angular/router';
+import { LocalStorageService } from '../../core/services/local-storage.service';
+import { UserOptions } from '../../core/models/user-options';
 import { Injectable } from '@angular/core';
-import { UserModel } from '../components/models/user.model';
+import { UserModel } from '../../admin/components/models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class UserService {
   user: UserModel;
   userOptions: UserOptions;
 
-  constructor(private localStorageService: LocalStorageService, ) {
+  constructor(private localStorageService: LocalStorageService, private router: Router) {
     this.readUserLocalStorage()
       .then((user) => {
         this.user = user as UserModel;
@@ -36,6 +37,8 @@ export class UserService {
   logOut() {
     this.user = null;
     this.isAutorize = false;
+    this.router.navigate(['/']);
+
   }
 
   private async readUserLocalStorage() {

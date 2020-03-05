@@ -16,7 +16,6 @@ export class AdminOrdersComponent implements OnInit {
     this.orders = this.localStorageService.getItem(localStoragekeyOrder) || [];
   }
 
-
   ngOnInit() {
   }
 

@@ -4,7 +4,6 @@ import {
   AdminMainComponent,
   AdminProductsComponent,
   AdminEditProductComponent,
-  LoginComponent
 } from './components';
 import { AdminRoutingModule } from './admin-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -17,7 +16,6 @@ import { PloductItemComponent } from './components/ploduct-item/ploduct-item.com
     AdminMainComponent,
     AdminProductsComponent,
     AdminEditProductComponent,
-    LoginComponent,
     AdminOrdersComponent,
     AdminProductsComponent,
     PloductItemComponent
@@ -30,7 +28,7 @@ import { PloductItemComponent } from './components/ploduct-item/ploduct-item.com
     ProductsModule
   ],
   exports: [
-    LoginComponent
+
   ]
 })
 export class AdminModule { }

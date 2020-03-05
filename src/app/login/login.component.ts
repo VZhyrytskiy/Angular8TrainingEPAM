@@ -1,8 +1,8 @@
 import { Router } from '@angular/router';
-import { UserModel } from './../models/user.model';
+import { UserModel } from '../admin/components/models/user.model';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { UserService } from 'src/app/admin/services/user.service';
+import { UserService } from 'src/app/login/services/user.service';
 
 @Component({
   selector: 'app-login',

@@ -2,11 +2,11 @@ import { AdminEditProductComponent } from './components/admin-edit-product/admin
 import { AdminOrdersComponent } from './components/admin-orders/admin-orders.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdminMainComponent, LoginComponent, AdminProductsComponent } from './components';
+import { AdminProductsComponent, AdminMainComponent } from './components';
 
 const routes: Routes = [
   {
-    path: 'admin',
+    path: '',
     component: AdminMainComponent,
     children: [
       {
@@ -25,10 +25,6 @@ const routes: Routes = [
       },
       { path: 'orders', component: AdminOrdersComponent }
     ]
-  },
-  {
-    path: 'login',
-    component: LoginComponent
   }
 ];
 
@@ -36,4 +32,10 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AdminRoutingModule { }
+export class AdminRoutingModule {
+  static components = [
+    AdminProductsComponent,
+    AdminEditProductComponent,
+    AdminOrdersComponent
+  ];
+}
