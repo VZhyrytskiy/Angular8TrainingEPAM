@@ -19,7 +19,8 @@
       <td>{{ item.email }}</td>
       <td>{{ item.address }}</td>
       <td>{{ item.phone }}</td>
-      <td>{{ item.totalSum }}</td>
+      <td>{{ item.totalSum | currency: "BYN " }}</td>
     </tr>
   </tbody>
 </table>
+<button type="button" class="btn btn-secondary btn-sm" (click)="clear()">Clear List Orders</button>

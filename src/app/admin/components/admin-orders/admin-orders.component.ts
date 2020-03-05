@@ -19,4 +19,9 @@ export class AdminOrdersComponent implements OnInit {
   ngOnInit() {
   }
 
+  clear() {
+    this.localStorageService.removeItem(localStoragekeyOrder);
+    this.orders = [];
+  }
+
 }
