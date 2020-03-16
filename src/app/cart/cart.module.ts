@@ -18,7 +18,7 @@ import { SharedModule } from '../shared/shared.module';
       CartItemComponent
     ],
   exports: [
-    BasketComponent,
+    BasketComponent, // все ли компоненты надо делать доступными за пределами модуля?
     CartListComponent,
     CartItemComponent
   ]

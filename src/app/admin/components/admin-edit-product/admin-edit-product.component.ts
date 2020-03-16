@@ -31,6 +31,7 @@ export class AdminEditProductComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router, private route: ActivatedRoute, private productsService: ProductsService) {
 
+    // $ - обычно признак Observable. В даном месте это подписка, а не Observable
     const route$ = route.params.subscribe(params => this.id = +params.productID);
     this.sub.add(route$);
 

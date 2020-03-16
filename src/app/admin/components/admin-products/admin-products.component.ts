@@ -15,6 +15,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   sub: Subscription;
 
   constructor(private productService: ProductsService, private router: Router) {
+    // можно перенести в ngOnInit
     this.sub = this.productService.streamProducts$
       .subscribe(date => this.products = this.productService.makeStream(date));
   }

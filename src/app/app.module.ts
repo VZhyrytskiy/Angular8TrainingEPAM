@@ -28,3 +28,4 @@ import { OrderModule } from './order/order.module';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+// Сделано больше, чем даже надо было
