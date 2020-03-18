@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 
 // rxjs
 import { switchMap } from 'rxjs/operators';
+import { ProductsObservableService } from '../../services/products-observable.service';
 
 declare var $: any;
 
@@ -18,7 +19,8 @@ export class ViewProductComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private productsService: ProductsService,
+    // private productsService: ProductsService,
+    private productsObservableService: ProductsObservableService
   ) {
     const observer = {
       next: (product: Product) => {
@@ -29,7 +31,8 @@ export class ViewProductComponent implements OnInit {
     };
     this.route.paramMap
       .pipe(
-        switchMap((params: ParamMap) => this.productsService.getProductById(+params.get('productID'))))
+       // switchMap((params: ParamMap) => this.productsObservableService.getProductById(+params.get('productID'))))
+        switchMap(() => this.productsObservableService.getProductById(99)))
       .subscribe(observer);
   }
 

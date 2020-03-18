@@ -1,3 +1,4 @@
+import { ProductsObservableService } from './../../../products/services/products-observable.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Product } from './../../../products/models/product.model';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
@@ -29,7 +30,12 @@ export class AdminEditProductComponent implements OnInit, OnDestroy {
   };
 
 
-  constructor(private router: Router, private route: ActivatedRoute, private productsService: ProductsService) {
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private productsObservableService: ProductsObservableService,
+    private productsService: ProductsService
+  ) {
 
     const route$ = route.params.subscribe(params => this.id = +params.productID);
     this.sub.add(route$);
@@ -44,12 +50,12 @@ export class AdminEditProductComponent implements OnInit, OnDestroy {
 
       const product$ = this.route.paramMap
         .pipe(
-          switchMap((params: ParamMap) => this.productsService.getProductById(+params.get('productID'))))
+          switchMap((params: ParamMap) => this.productsObservableService.getProductById(+params.get('productID'))))
         .subscribe(observer);
 
       this.sub.add(product$);
     } else {
-      this.product = this.productsService.getEmptyProduct();
+       this.product = this.productsService.getEmptyProduct();
     }
   }
 
@@ -79,7 +85,7 @@ export class AdminEditProductComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.productsService.addOrEditProduct(formData as Product);
+  //  this.productsService.addOrEditProduct(formData as Product);
     this.onClose();
   }
 

@@ -28,9 +28,9 @@ export class ProductsService {
     });
   }
 
-  async getProductById(id: number | string) {
-    return Data.find(item => item.id === +id);
-  }
+  // async getProductById(id: number | string) {
+  //   return Data.find(item => item.id === +id);
+  // }
 
   deleteProduct(item: Product) {
     const index = this.productsData.indexOf(item);

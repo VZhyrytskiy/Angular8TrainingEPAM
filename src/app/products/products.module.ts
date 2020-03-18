@@ -6,8 +6,6 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { SharedModule } from '../shared/shared.module';
 import { ViewProductComponent } from './components/view-product/view-product.component';
 
-
-
 @NgModule({
   imports: [
     SharedModule,
@@ -23,6 +21,7 @@ import { ViewProductComponent } from './components/view-product/view-product.com
     FirstComponent,
     ProductComponent,
     ProductListComponent
-  ]
+  ],
+  providers: []
 })
 export class ProductsModule { }

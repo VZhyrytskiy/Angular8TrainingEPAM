@@ -1,24 +1,24 @@
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from '../../services/products.service';
 import { Product } from '../../models/product.model';
 import { CartService } from 'src/app/cart/services/cart.service';
+import { ProductsPromiseService } from './../../services/products-promise.service';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  styleUrls: ['./product-list.component.css'],
+  providers: [ProductsPromiseService]
 })
 export class ProductListComponent implements OnInit {
-  products: Observable<Array<Product>>;
+  products: Promise<Array<Product>>;
 
   constructor(
     private router: Router,
-    private productsService: ProductsService,
-    private cartService: CartService
+    private cartService: CartService,
+    private productsPromiseService: ProductsPromiseService
   ) {
-    this.products = this.productsService.getProducts();
+    this.products = productsPromiseService.getProducts();
   }
 
   ngOnInit() { }
