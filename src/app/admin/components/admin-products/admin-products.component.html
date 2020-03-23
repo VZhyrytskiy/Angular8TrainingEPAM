@@ -12,11 +12,11 @@
           <div class="p-2 bg-warning flex-fill header-item6">Action</div>
         </div>
       </div>
-      <div class="scroll-area-sm">
+      <div #scrollContent class="scroll-area-sm">
         <div style="position: static;" class="ps ps--active-y">
           <div class="ps-content">
             <ul class=" list-group list-group-flush">
-              <li class="list-group-item" *ngFor="let item of products | async">
+              <li #allThings class="list-group-item" *ngFor="let item of products | async">
                 <app-ploduct-item [product]="item" (editProduct)="onEdit($event)" (deleteProduct)="onDelete($event)" ></app-ploduct-item>
               </li>
             </ul>
@@ -29,4 +29,4 @@
     </div>
   </div>
 </div>
-<router-outlet></router-outlet>
+<router-outlet (deactivate)="onOutletDeavtivate($event)"></router-outlet>

@@ -28,44 +28,4 @@ export class ProductsService {
     });
   }
 
-  // async getProductById(id: number | string) {
-  //   return Data.find(item => item.id === +id);
-  // }
-
-  deleteProduct(item: Product) {
-    const index = this.productsData.indexOf(item);
-    this.productsData.splice(index, 1);
-    this.streamProducts$.next(this.productsData);
-  }
-
-  addOrEditProduct(item: Product) {
-    const index = this.productsData.findIndex(prod => prod.id === item.id);
-
-    if (index > -1) {
-      this.productsData[index] = item;
-    } else {
-      this.productsData = [...this.productsData, item];
-    }
-
-    this.streamProducts$.next(this.productsData);
-  }
-
-  getID(): number {
-    let id = Math.max(...this.productsData.map(item => item.id));
-    return ++id;
-  }
-
-  getEmptyProduct(): Product {
-    return {
-      id: this.getID(),
-      isAvailable: false,
-      img: 'assets/img/inf.jpg',
-      name: 'New Product',
-      description: '',
-      price: 0,
-      category: '',
-      count: 0,
-      sex: undefined
-    };
-  }
 }

@@ -1,6 +1,6 @@
 import { ProductsService } from '../../services/products.service';
 import { Product } from 'src/app/products/models/product.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 
 // rxjs
@@ -14,29 +14,32 @@ declare var $: any;
   styleUrls: ['./view-product.component.css']
 })
 export class ViewProductComponent implements OnInit {
-  product: Product;
+  product: Product = null;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    // private productsService: ProductsService,
+    private productsService: ProductsService,
     private productsObservableService: ProductsObservableService
   ) {
+    // this.product = this.productsService.getEmptyProduct();
+  }
+
+  ngOnInit() {
     const observer = {
-      next: (product: Product) => {
-        this.product = { ...product };
+      next: (products: Product[]) => {
+        if (products && products.length > 0) {
+          this.product = { ...products[0] };
+        }
         this.open();
       },
       error: (err: any) => console.log(err)
     };
     this.route.paramMap
       .pipe(
-       // switchMap((params: ParamMap) => this.productsObservableService.getProductById(+params.get('productID'))))
-        switchMap(() => this.productsObservableService.getProductById(99)))
+        switchMap((params: ParamMap) => this.productsObservableService.getProductById(+params.get('productID'))))
       .subscribe(observer);
   }
-
-  ngOnInit() { }
 
   onGoBack(): void {
     this.router.navigate(['/home']);

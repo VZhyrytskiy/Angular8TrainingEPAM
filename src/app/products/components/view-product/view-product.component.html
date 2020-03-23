@@ -9,7 +9,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="productModalLabel">{{ product.name }}</h5>
+        <h5 class="modal-title" id="productModalLabel">{{ product?.name }}</h5>
         <button
           type="button"
           class="close btn-sm"
@@ -22,25 +22,25 @@
       <div class="modal-body">
         <div class="container">
           <div class="row">
-            <img [src]="product.img" [alt]="product.name" />
+            <img [src]="product?.img" [alt]="product?.name" />
           </div>
           <div class="row">
-            <div>{{ product.description }}</div>
+            <div>{{ product?.description }}</div>
           </div>
           <div class="row">
-            <div>{{ product.category | uppercase }}</div>
+            <div>{{ product?.category | uppercase }}</div>
           </div>
           <div class="row">
-            <div>{{ product.price | currency: "BYN " }}</div>
+            <div>{{ product?.price | currency: "BYN " }}</div>
           </div>
           <div class="row">
             <span
               [ngClass]="
-              product.isAvailable
+              product?.isAvailable
                   ? 'badge badge-pill badge-primary'
                   : 'badge badge-pill badge-secondary'
               "
-              >{{ product.isAvailable ? "in stock" : "order" }}
+              >{{ product?.isAvailable ? "in stock" : "order" }}
             </span>
           </div>
         </div>

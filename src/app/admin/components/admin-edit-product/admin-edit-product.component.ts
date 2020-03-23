@@ -1,3 +1,4 @@
+import { ProductsPromiseService } from './../../../products/services/products-promise.service';
 import { ProductsObservableService } from './../../../products/services/products-observable.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Product } from './../../../products/models/product.model';
@@ -17,6 +18,7 @@ export class AdminEditProductComponent implements OnInit, OnDestroy {
   product: Product;
   formEditProduct: FormGroup;
   sub: Subscription = new Subscription();
+  createNewProduct = false;
   id: number;
 
   private controls = {
@@ -34,7 +36,7 @@ export class AdminEditProductComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private productsObservableService: ProductsObservableService,
-    private productsService: ProductsService
+    private productsPromiseService: ProductsPromiseService
   ) {
 
     const route$ = route.params.subscribe(params => this.id = +params.productID);
@@ -42,8 +44,10 @@ export class AdminEditProductComponent implements OnInit, OnDestroy {
 
     if (this.id) {
       const observer = {
-        next: (product: Product) => {
-          this.product = { ...product };
+        next: (products: Product[]) => {
+          this.product = { ...products[0] };
+          this._setForm(this.product);
+          this.open();
         },
         error: (err: any) => console.log(err)
       };
@@ -55,24 +59,15 @@ export class AdminEditProductComponent implements OnInit, OnDestroy {
 
       this.sub.add(product$);
     } else {
-       this.product = this.productsService.getEmptyProduct();
+      this.createNewProduct = true;
+      this.productsPromiseService.getEmptyProduct().then(data => this._setForm(data));
+     // this._setForm(this.productsPromiseService.getEmptyProduct());
     }
   }
 
   ngOnInit() {
     this.formEditProduct = new FormGroup(this.controls);
-    this.setForm(this.product);
     this.open();
-  }
-
-  setForm(product: Product): void {
-    this.controls.isAvailable.setValue(product.isAvailable);
-    this.controls.name.setValue(product.name);
-    this.controls.description.setValue(product.description);
-    this.controls.category.setValue(product.category);
-    this.controls.count.setValue(product.count);
-    this.controls.price.setValue(product.price);
-    this.controls.sex.setValue(product.sex);
   }
 
   onSubmit() {
@@ -85,7 +80,11 @@ export class AdminEditProductComponent implements OnInit, OnDestroy {
       return;
     }
 
-  //  this.productsService.addOrEditProduct(formData as Product);
+    if (this.createNewProduct) {
+      this.sub = this.productsObservableService.createProduct(formData as Product).subscribe();
+    } else {
+      this.sub = this.productsObservableService.createProduct(formData as Product).subscribe()
+    }
     this.onClose();
   }
 
@@ -107,5 +106,16 @@ export class AdminEditProductComponent implements OnInit, OnDestroy {
     $('#editModal').on('hidden.bs.modal', (e) => {
       this.onGoBack();
     });
+  }
+
+  private _setForm(product: Product) {
+    this.product = product;
+    this.controls.isAvailable.setValue(product.isAvailable);
+    this.controls.name.setValue(product.name);
+    this.controls.description.setValue(product.description);
+    this.controls.category.setValue(product.category);
+    this.controls.count.setValue(product.count);
+    this.controls.price.setValue(product.price);
+    this.controls.sex.setValue(product.sex);
   }
 }

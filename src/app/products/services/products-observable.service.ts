@@ -5,11 +5,12 @@ import {
   HttpClient,
   HttpHeaders,
   HttpResponse,
-  HttpErrorResponse
+  HttpErrorResponse,
+  HttpParams
 } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
-import { catchError, retry, publish, refCount, share } from 'rxjs/operators';
+import { catchError, retry, publish, refCount, share, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -17,14 +18,14 @@ import { catchError, retry, publish, refCount, share } from 'rxjs/operators';
 export class ProductsObservableService {
   constructor(
     private http: HttpClient,
-    private productsPromiseService: ProductsPromiseService
   ) { }
 
   private productsUrl = 'http://localhost:3000/products';
 
   getProductById(id: number | string) {
-    const url = `${this.productsUrl}/${id}`;
-    return this.http.get<Product>(url)
+    const url = `${this.productsUrl}`;
+    const params = new HttpParams().set('id', `${id}`);
+    return this.http.get<Product[]>(url, { params })
       .pipe(
         retry(3),
         share(),
@@ -32,21 +33,7 @@ export class ProductsObservableService {
       );
   }
 
-  // addOrEditProduct(item: Product) {
-  //   const product = this.getProductById(item.id);
-  //   if (product)
-  //   .findIndex(prod => prod.id === item.id);
-
-  //   if (index > -1) {
-  //     this.productsData[index] = item;
-  //   } else {
-  //     this.productsData = [...this.productsData, item];
-  //   }
-
-  //   this.streamProducts$.next(this.productsData);
-  // }
-
-  private updateProduct(product: Product): Observable<Product> {
+  updateProduct(product: Product): Observable<Product> {
     const url = `${this.productsUrl}/${product.id}`;
     const body = JSON.stringify(product);
     const options = {
@@ -58,10 +45,18 @@ export class ProductsObservableService {
       .pipe(catchError(this.handleError));
   }
 
+  removeProduct(id: number | string) {
+    const url = `${this.productsUrl}/${+id}`;
+    return this.http.delete<Product[]>(url)
+      .pipe(
+        share(),
+        catchError(this.handleError),
+      );
+  }
 
-  private createProduct(user: Product): Observable<Product> {
+  createProduct(product: Product): Observable<Product> {
     const url = this.productsUrl;
-    const body = JSON.stringify(user);
+    const body = JSON.stringify(product);
     const options = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
@@ -73,8 +68,6 @@ export class ProductsObservableService {
       );
   }
 
-
-  // deleteUser(user: UserModel) {}
 
   private handleError(err: HttpErrorResponse) {
     // A client-side or network error occurred.
