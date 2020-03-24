@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { ProductsModule } from './products/products.module';
 import { NavModule } from './header/nav.module';
 import { OrderModule } from './order/order.module';
+import { httpInterceptorProviders } from './core/interceptors';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { OrderModule } from './order/order.module';
     // MUST BE LAST
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
