@@ -1,3 +1,5 @@
+import { AppSettingsService } from './setings/app-settings.service';
+
 import { Component, ViewChild, ElementRef, OnInit, AfterViewInit } from '@angular/core';
 
 @Component({
@@ -9,11 +11,12 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('title', { static: false })
   titleEl: ElementRef;
 
-  constructor() { }
+  constructor(private appSettingsService: AppSettingsService) { }
 
   ngOnInit() { }
 
   ngAfterViewInit() {
-    this.titleEl.nativeElement.textContent = 'Super-puper Shop';
+    const key = 'title';
+    this.titleEl.nativeElement.textContent = this.appSettingsService.settings[key]; // 'Super-puper Shop';
   }
 }
