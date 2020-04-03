@@ -19,7 +19,7 @@ import { ViewProductComponent } from './components/view-product/view-product.com
   ],
   exports: [
     FirstComponent,
-    ProductComponent,
+    // ProductComponent,
     ProductListComponent
   ],
   providers: []

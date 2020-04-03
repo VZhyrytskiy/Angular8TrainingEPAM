@@ -19,7 +19,7 @@ export class ViewProductComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private productsService: ProductsService,
+    // private productsService: ProductsService,
     private productsObservableService: ProductsObservableService
   ) {
     // this.product = this.productsService.getEmptyProduct();

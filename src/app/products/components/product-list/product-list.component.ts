@@ -16,7 +16,7 @@ export class ProductListComponent implements OnInit {
   constructor(
     private router: Router,
     private cartService: CartService,
-    private productsPromiseService: ProductsPromiseService
+    productsPromiseService: ProductsPromiseService
   ) {
     this.products = productsPromiseService.getProducts();
   }

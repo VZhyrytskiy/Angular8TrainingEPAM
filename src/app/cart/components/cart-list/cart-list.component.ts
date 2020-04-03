@@ -37,6 +37,7 @@ export class CartListComponent implements OnInit {
     this.cartService.addCartById(id);
   }
 
+  // onClearCart?
   clearCart() {
     this.cartService.clearCart();
   }
@@ -49,6 +50,7 @@ export class CartListComponent implements OnInit {
     this.orderKey = key;
   }
 
+  // onCreateOrder?
   order() {
     this.router.navigate(['order']).then(() => {
       this.onClose();

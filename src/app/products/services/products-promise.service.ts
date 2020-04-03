@@ -29,7 +29,7 @@ export class ProductsPromiseService {
   }
 
   async getEmptyProduct(): Promise<Product> {
-    let id = await this.getID().then()
+    let id = await this.getID().then();
     return {
       id: ++id,
       isAvailable: false,

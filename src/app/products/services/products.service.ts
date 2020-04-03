@@ -19,7 +19,7 @@ export class ProductsService {
   }
 
   getProducts(): Observable<Array<Product>> {
-    return this.makeStream(this.productsData);
+    return this.makeStream(this.productsData); // тут можно просто return of(this.productsData)
   }
 
   makeStream(date): Observable<Array<Product>> {
