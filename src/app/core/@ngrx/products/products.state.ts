@@ -6,7 +6,7 @@ export interface ProductsState {
   data: ReadonlyArray<Product>;
 }
 
-export const initialTasksState: ProductsState = {
+export const initialProductsState: ProductsState = {
   data: [
     new ProductModel(
       1,
