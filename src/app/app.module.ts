@@ -11,6 +11,7 @@ import { NavModule } from './header/nav.module';
 import { OrderModule } from './order/order.module';
 import { httpInterceptorProviders } from './core/interceptors';
 import { AppSettingsService } from './setings/app-settings.service';
+import { RootStoreModule } from './core/@ngrx/root-store.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AppSettingsService } from './setings/app-settings.service';
     LayoutModule,
     OrderModule,
     LoginModule,
+    RootStoreModule,
     // MUST BE LAST
     AppRoutingModule,
   ],

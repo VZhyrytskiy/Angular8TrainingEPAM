@@ -1,5 +1,5 @@
 <div class="box">
-  <div *ngFor="let product of products | async">
+  <div *ngFor="let product of (productsState$ | async).data">
     <app-product
       [product]="product"
       (addProduct)="onAddProduct($event)"
