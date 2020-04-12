@@ -1,15 +1,15 @@
 import { Sex } from 'src/app/shared/enums/sex.enum';
 
 export interface Product {
-  id: number;
-  isAvailable: boolean;
-  img: string;
-  name: string;
-  description: string;
-  price: number;
-  category: string;
-  count: number;
-  sex: Sex;
+  id?: number;
+  isAvailable?: boolean;
+  img?: string;
+  name?: string;
+  description?: string;
+  price?: number;
+  category?: string;
+  count?: number;
+  sex?: Sex;
 }
 
 export class ProductModel implements Product {

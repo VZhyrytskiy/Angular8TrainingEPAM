@@ -9,6 +9,7 @@ import { Store, select } from '@ngrx/store';
 import { AppState, ProductsState } from './../../../core/@ngrx';
 // rxjs
 import { Observable } from 'rxjs';
+import { addProductToCatr } from 'src/app/core/@ngrx/cart/cart.actions';
 
 
 
@@ -18,16 +19,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  // products: Promise<Array<Product>>;
   productsState$: Observable<ProductsState>;
 
   constructor(
     private store: Store<AppState>,
     private router: Router,
-    private cartService: CartService,
-    // private productsPromiseService: ProductsPromiseService
   ) {
-    // this.products = productsPromiseService.getProducts();
+
   }
 
   ngOnInit() {
@@ -36,7 +34,7 @@ export class ProductListComponent implements OnInit {
   }
 
   onAddProduct(event) {
-    this.cartService.addProduct(event);
+    this.store.dispatch(addProductToCatr({product: event}));
   }
 
   onViewProduct(product: Product): void {

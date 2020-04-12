@@ -15,14 +15,25 @@ export const getProductsError = createAction(
 );
 
 export const getProduct = createAction(
-  '[Add/Edit Product Page (App)] GET_PRODUCT',
+  '[Add/Edit Product List] GET_PRODUCT',
   props<{ ProductID: number }>()
+);
+
+export const getProductSuccess = createAction(
+  '[Get Tasks Effect] GET_PRODUCT_SUCCEESS',
+  props<{ products: Product[] }>()
+);
+
+export const getProductError = createAction(
+  '[Get Tasks Effect] GET_PRODUCT_ERROR',
+  props<{ error: Error | string }>()
 );
 
 export const createProduct = createAction(
   '[Product List Page] CREATE_PRODUCT',
   props<{ Product: Product }>()
 );
+
 
 export const updateProduct = createAction(
   '[Product List Page] UPDATE_PRODUCT',

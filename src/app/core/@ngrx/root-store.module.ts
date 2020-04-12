@@ -6,6 +6,8 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from './../../../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
+import { RouterEffects } from './router/router.effects';
+import { CartStoreModule } from './cart/cart-store.module';
 
 
 
@@ -14,6 +16,7 @@ import { EffectsModule } from '@ngrx/effects';
   declarations: [],
   imports: [
     CommonModule,
+    EffectsModule.forRoot([RouterEffects]),
     StoreModule.forRoot({}, {
       runtimeChecks: {
         strictStateImmutability: true,
@@ -22,8 +25,8 @@ import { EffectsModule } from '@ngrx/effects';
         strictActionSerializability: true
       }
     }),
-    EffectsModule.forRoot([]),
     ProductsStoreModule,
+    CartStoreModule,
     // Instrumentation must be imported after importing StoreModule (config is optional)
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ]

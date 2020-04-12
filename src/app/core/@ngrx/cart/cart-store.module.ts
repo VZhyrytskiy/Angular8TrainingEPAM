@@ -3,18 +3,17 @@ import { CommonModule } from '@angular/common';
 
 // @NgRx
 import { StoreModule } from '@ngrx/store';
-import { productsReducer } from './products.reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { ProductsEffects } from '.';
 import { CartEffects } from '../cart/cart.effects';
+import { cartReducer } from './cart.reducer';
 
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    StoreModule.forFeature('products', productsReducer),
-    EffectsModule.forFeature([ProductsEffects])
+    StoreModule.forFeature('cart', cartReducer),
+    EffectsModule.forFeature([CartEffects])
   ]
 })
-export class ProductsStoreModule { }
+export class CartStoreModule { }

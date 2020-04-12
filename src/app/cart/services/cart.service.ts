@@ -1,5 +1,6 @@
+import { CartItem } from './../models/cart.model';
+import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { CartItem } from '../models/cart.model';
 import { Product } from 'src/app/products/models/product.model';
 
 @Injectable({
@@ -31,11 +32,16 @@ export class CartService {
     this.updateCartData();
   }
 
-  addProduct(product: Product): void {
+  addProduct(product: Product): Promise<CartItem[]> {
     const cart = this.mapProductToCart(product, 1);
     this.addCart(cart);
     this.updateCartData();
+    return new Promise((resolve, reject) => {
+      resolve(this.cartProducts),
+        reject((err: any) => err);
+    });
   }
+
 
   getSum(): number {
     let sum = 0;
