@@ -12,7 +12,7 @@ import { cartReducer } from './cart.reducer';
   declarations: [],
   imports: [
     CommonModule,
-    StoreModule.forFeature('cart', cartReducer),
+    StoreModule.forFeature('CartModule', cartReducer),
     EffectsModule.forFeature([CartEffects])
   ]
 })

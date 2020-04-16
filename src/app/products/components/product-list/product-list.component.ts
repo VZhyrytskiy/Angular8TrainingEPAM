@@ -29,7 +29,7 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.productsState$ = this.store.pipe(select('products'));
+    this.productsState$ = this.store.pipe(select('ProductsModule'));
     this.store.dispatch(getProducts());
   }
 
