@@ -1,5 +1,4 @@
 import { CartItem } from './../models/cart.model';
-import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Product } from 'src/app/products/models/product.model';
 
@@ -110,5 +109,9 @@ export class CartService {
     let count = 0;
     this.cartProducts.forEach(item => count = count + item.count);
     return count;
+  }
+
+  getProducts() {
+    return this.cartProducts;
   }
 }

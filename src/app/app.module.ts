@@ -12,6 +12,8 @@ import { OrderModule } from './order/order.module';
 import { httpInterceptorProviders } from './core/interceptors';
 import { AppSettingsService } from './setings/app-settings.service';
 import { RootStoreModule } from './core/@ngrx/root-store.module';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {ValidatorsModule} from "./validators/validators.module";
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { RootStoreModule } from './core/@ngrx/root-store.module';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     ProductsModule,
     NavModule,
@@ -27,6 +31,7 @@ import { RootStoreModule } from './core/@ngrx/root-store.module';
     OrderModule,
     LoginModule,
     RootStoreModule,
+    ValidatorsModule,
     // MUST BE LAST
     AppRoutingModule,
   ],
