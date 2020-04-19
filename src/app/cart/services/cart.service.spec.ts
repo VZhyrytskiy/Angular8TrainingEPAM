@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { CartService } from './cart.service';
 
-let product = {
+const product = {
   id: 1,
   isAvailable: true,
   name: 'Boots',
@@ -11,14 +11,16 @@ const cartItem = {
   id: 1,
   name: 'Suit',
   price: 1,
-  count: 1
+  count: 1,
+  img: ''
 };
 
 const cartItem2 = {
   id: 2,
   name: 'Shoes',
   price: 1,
-  count: 1
+  count: 1,
+  img: ''
 };
 
 describe('CartService', () => {
@@ -27,7 +29,7 @@ describe('CartService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({});
     cartService = TestBed.get(CartService);
-    cartService.cartProducts = [cartItem,cartItem2];
+    cartService.cartProducts = [cartItem, cartItem2];
   });
 
   it('should be created', () => {
@@ -43,7 +45,7 @@ describe('CartService', () => {
 
   it('should get sum of cart products', () => {
     const a = cartService.getSum();
-    expect(a).toBe(3);
+    expect(a).toBe(2);
   });
 
   it('should get length of cart product array', () => {
