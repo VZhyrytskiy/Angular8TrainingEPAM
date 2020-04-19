@@ -1,4 +1,5 @@
 import { CartItem } from './../models/cart.model';
+import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Product } from 'src/app/products/models/product.model';
 
@@ -52,9 +53,10 @@ export class CartService {
     return this.cartProducts.length;
   }
 
-  clearCart(): void {
+  clearCart(): CartItem[] {
     this.cartProducts = [];
     this.updateCartData();
+    return this.cartProducts;
   }
 
   private getIndexProductById(id: number): number {
@@ -96,7 +98,7 @@ export class CartService {
     };
   }
 
-  private getCartById(id: number): CartItem {
+  getCartById(id: number): CartItem {
     return this.cartProducts.find(item => item.id === id);
   }
 
@@ -109,9 +111,5 @@ export class CartService {
     let count = 0;
     this.cartProducts.forEach(item => count = count + item.count);
     return count;
-  }
-
-  getProducts() {
-    return this.cartProducts;
   }
 }

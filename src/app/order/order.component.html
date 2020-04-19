@@ -1,380 +1,101 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h4 class="pannel-title">
-      Order Form
-    </h4>
+<div class="order">
+  <div class="row">
+    <h4 class="col-md-4">Products</h4>
+    <h4 class="col-md-8">Total cost: {{ sum | currency: "BYN " }}</h4>
   </div>
+  <p></p>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="order-cart" *ngFor="let item of cartService.cartProducts">
+        <app-cart-item
+          [cart]="item"
+          (delete)="onDeleteItem($event)"
+          (add)="onAddItem($event)"
+        ></app-cart-item>
+      </div>
+    </div>
 
-  <div class="panel-body">
-    <form (ngSubmit)="send()"
-          class="form-horizontal"
-          novalidate
-          [formGroup]="userForm">
-      <fieldset>
-        <div class="form-group" [ngClass]="{'has-error': validationMessage}">
-          <label class="col-md-2 control-label" for="firstNameId">First Name</label>
-          <div class="col-md-8">
-            <input class="form-control"
-                   id="firstNameId"
-                   placeholder="First Name"
-                   [(ngModel)]="order.firstName"
-                   formControlName="firstName"
-                   (blur)="onBlur('first')">
-            <span class="help-block" *ngIf="validationMessage">{{ validationMessage }}</span>
-          </div>
-        </div>
-
-
-        <div class="form-group"
-             [ngClass]="{'has-error': (userForm.get('lastName').touched || userForm.get('lastName').dirty) && !userForm.get('lastName').valid }">
-          <label class="col-md-2 control-label" for="lastNameId">Last Name</label>
-          <div class="col-md-8">
-            <input class="form-control"
-                   id="lastNameId"
-                   placeholder="Last Name"
-                   [(ngModel)]="order.lastName"
-                   formControlName="lastName">
-            <span class="help-block"
-                  *ngIf="(userForm.get('lastName').touched ||
-                          userForm.get('lastName').dirty) &&
-                          userForm.get('lastName').errors">
-             <span *ngIf="userForm.get('lastName').hasError('required')">
-             Please enter your last name.
-                </span>
-            </span>
-          </div>
-        </div>
-
-
-        <div formGroupName="emailGroup" [ngClass]="{'has-error': userForm.get('emailGroup.email').errors}">
-
-          <div class="form-group"
-               [ngClass]="{'has-error': validationMessage}">
-            <label class="col-md-2 control-label" for="lastNameId">Email</label>
-            <div class="col-md-8">
-              <input class="form-control"
-                     id="emailId"
-                     type="email"
-                     placeholder={{placeholder.email}}
-                     [(ngModel)]="order.email"
-                     formControlName="email"
-                     appAsyncEmailValidator
-                     (blur)="onBlur('email')">
-              <span class="help-block" *ngIf="validationMessage">{{ validationMessage }}</span>
-            </div>
-          </div>
-
-
-          <div class="form-group"
-               [ngClass]="{'has-error': (userForm.get('emailGroup.confirmEmail').touched ||
-                                         userForm.get('emailGroup.confirmEmail').dirty) &&
-                                         userForm.get('emailGroup.confirmEmail').invalid }">
-            <label class="col-md-2 control-label" for="confirmEmailId">Confirm Email</label>
-            <div class="col-md-8">
-              <input class="form-control"
-                     id="confirmEmailId"
-                     type="email"
-                     placeholder={{placeholder.confirmEmail}}
-                     formControlName="confirmEmail"/>
-              <span class="help-block" *ngIf="(userForm.get('emailGroup.confirmEmail').touched ||
-                                               userForm.get('emailGroup.confirmEmail').dirty) &&
-                                              (userForm.get('emailGroup.confirmEmail').errors ||
-                                               userForm.get('emailGroup').errors) ">
-                  <span *ngIf="userForm.get('emailGroup.confirmEmail').hasError('required')">
-                            Please confirm your email address.
-                  </span>
-                  <span *ngIf="userForm.get('emailGroup').hasError('emailMatch')">
-                        The confirmation does not match the email address.
-                  </span>
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div formArrayName="phones">
-          <div *ngFor="let phone of phones.controls; let i = index" [formGroupName]="i">
-            <div class="form-group"
-                 [ngClass]="{'has-error': (userForm.get('phones').touched || userForm.get('phones').dirty) && !userForm.get('phones').valid }">
-              <label class="col-md-2 control-label"
-                     attr.for="{{'phoneId' + i}}">Phone</label>
-              <div class="col-md-8">
-                <input class="form-control"
-                       id="phoneId"
-                       placeholder={{placeholder.phone}}
-                       [(ngModel)]="order.phone"
-                       formControlName="phone"
-                       appPhoneValidator/>
-                <span class="help-block"
-                      *ngIf="(userForm.get('phones').touched ||
-                           userForm.get('phones').dirty) &&
-                           userForm.get('phones').errors">
-              <span *ngIf="userForm.get('phones').hasError('phone')">
-                           Please enter correct number
-              </span>
-            </span>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-md-8 col-md-offset-2">
-              <button class="btn btn-primary"
-                      type="button"
-                      (click)="onAddPhone()">
-                Add Additional Phone
-              </button>
-              <button class="btn btn-primary"
-                      type="button"
-                      (click)="onDeletePhone()">
-                Delete Phone
-              </button>
-            </div>
-          </div>
-        </div>
-
-
-
-        <div class="form-group">
-          <label class="col-md-2 control-label">Send Notifications</label>
-          <div class="col-md-8">
-            <label class="radio-inline">
-              <input type="radio"
-                     value="email"
-                     formControlName="notification">
-              Email
-            </label>
-            <label class="radio-inline">
-              <input type="radio"
-                     value="text"
-                     formControlName="notification">
-              Text
-            </label>
-          </div>
-        </div>
-
-        <div class="form-group"
-             [ngClass]="{'has-error': (userForm.get('serviceLevel').touched || userForm.get('serviceLevel').dirty) && !userForm.get('serviceLevel').valid }">
-          <label class="col-md-2 control-label"
-                 for="serviceLevelId">Service Level</label>
-
-          <div class="col-md-8">
-            <input class="form-control"
-                   id="serviceLevelId"
-                   type="number"
-                   formControlName="serviceLevel"
-                   appServiceLevelValidator rMin="1" rMax="2" #serviceLevelVar/>
-            <span class="help-block"
-                  *ngIf="(userForm.get('serviceLevel').touched || userForm.get('serviceLevel').dirty) && userForm.get('serviceLevel').errors">
-                            <span *ngIf="userForm.get('serviceLevel').hasError('serviceLevel')">
-                                Please enter correct number from
-                              {{serviceLevelVar.getAttribute('rMin') || 1}} to
-                              {{serviceLevelVar.getAttribute('rMax') || 2}}.
-
-                            </span>
-                        </span>
-          </div>
-        </div>
-
-
-
-        <div *ngIf="userForm.get('needDelivery').value">
-
-          <div class="form-group">
-            <label class="col-md-2 control-label">Address Type</label>
-            <div class="col-md-8">
-              <label class="radio-inline">
-                <input type="radio" id="addressType1Id" value="home" [(ngModel)]="user.addressType"
-                       formControlName="addressType"
-                >Home
-              </label>
-              <label class="radio-inline">
-                <input type="radio" id="addressType2Id" value="work" [(ngModel)]="user.addressType"
-                       formControlName="addressType"
-                >Work
-              </label>
-              <label class="radio-inline">
-                <input type="radio" id="addressType3Id" value="other" [(ngModel)]="user.addressType"
-                       formControlName="addressType"
-                >Other
-              </label>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-md-2 control-label"
-                   for="cityId">Country, City, Zip Code</label>
-
-            <div class="col-md-3">
-              <select class="form-control"
-                      id="countryId"
-                      [(ngModel)]="user.country"
-                      formControlName="country"
-              >
-                <option value="">Select a Country...</option>
-                <option *ngFor="let country of countries"
-                        value="{{country}}">{{country}}
-                </option>
-
-              </select>
-            </div>
-            <div class="col-md-3">
-              <input type="text"
-                     class="form-control"
-                     id="cityId"
-                     placeholder="City"
-                     [(ngModel)]="user.city"
-                     formControlName="city">
-
-            </div>
-            <div class="col-md-2">
-              <input type="number"
-                     class="form-control"
-                     id="zipId"
-                     placeholder="Zip Code"
-                     [(ngModel)]="user.zip"
-                     formControlName="zip"
-              >
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-md-2 control-label"
-                   for="street1Id">Street</label>
-            <div class="col-md-8">
-              <input type="text"
-                     class="form-control"
-                     id="street1Id"
-                     placeholder="Street address"
-                     [(ngModel)]="user.street"
-                     formControlName="street">
-
-            </div>
-          </div>
-        </div>
-
-
-        <div class="form-group">
-          <div class="col-md-4 col-md-offset-2">
-        <span>
-        <button class="btn btn-primary"
-                type="submit"
-                [disabled]="!userForm.valid">
-        Save
-        </button>
-        </span>
-          </div>
-        </div>
-
-        <label>
-          <input id="needDeliveryId"
-                 type="checkbox"
-                 formControlName="needDelivery"/>
-          Need Delivery
+    <form class="col-md-8" [formGroup]="formOrder" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <label for="inputFirstName" class="col-sm-2 col-form-label"
+          >First Name
         </label>
-      </fieldset>
+        <div class="form-group col-md-10">
+          <input
+            id="inputFirstName"
+            type="text"
+            class="form-control"
+            placeholder="First name"
+            formControlName="firstName"
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="inputLastName" class="col-sm-2 col-form-label"
+          >Last Name
+        </label>
+        <div class="form-group col-md-10">
+          <input
+            id="inputLastName"
+            type="text"
+            class="form-control"
+            placeholder="Last name"
+            formControlName="lastName"
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="inputEmail" class="col-sm-2 col-form-label">Email </label>
+        <div class="form-group col-md-10">
+          <input
+            id="inputEmail"
+            type="email"
+            class="form-control"
+            placeholder="Email"
+            formControlName="email"
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="inputAddress" class="col-sm-2 col-form-label"
+          >Address
+        </label>
+        <div class="form-group col-md-10">
+          <input
+            id="inputAddress"
+            type="text"
+            class="form-control"
+            placeholder="1234 Main St"
+            formControlName="address"
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="inputPhone" class="col-sm-2 col-form-label">Phone </label>
+        <div class="form-group col-md-10">
+          <input
+            id="inputPhone"
+            type="number"
+            class="form-control"
+            placeholder="+375(XX)XXX XX XX"
+            formControlName="phone"
+            data-inputmask="'mask': '+33 9 99 99 99 99'"
+          />
+        </div>
+      </div>
+      <div class="d-flex">
+        <button
+          type="submit"
+          class="btn btn-primary ml-auto p-2"
+          [disabled]="cartService.cartProducts.length === 0"
+        >
+          Сheckout
+        </button>
+      </div>
     </form>
   </div>
 </div>
-
-
-
-<!--<div class="order">-->
-<!--  <div class="row">-->
-<!--    <h4 class="col-md-4">Products</h4>-->
-<!--    <h4 class="col-md-8">Total cost: {{ sum | currency: "BYN " }}</h4>-->
-<!--  </div>-->
-<!--  <p></p>-->
-<!--  <div class="row">-->
-<!--    <div class="col-md-4">-->
-<!--      <div class="order-cart" *ngFor="let item of cartService.cartProducts">-->
-<!--        <app-cart-item-->
-<!--          [cart]="item"-->
-<!--          (delete)="onDeleteItem($event)"-->
-<!--          (add)="onAddItem($event)"-->
-<!--        ></app-cart-item>-->
-<!--      </div>-->
-<!--    </div>-->
-
-<!--    <form class="col-md-8" [formGroup]="formOrder" (ngSubmit)="onSubmit()">-->
-<!--      <div class="form-row">-->
-<!--        <label for="inputFirstName" class="col-sm-2 col-form-label"-->
-<!--          >First Name-->
-<!--        </label>-->
-<!--        <div class="form-group col-md-10">-->
-<!--          <input-->
-<!--            id="inputFirstName"-->
-<!--            type="text"-->
-<!--            class="form-control"-->
-<!--            placeholder="First name"-->
-<!--            formControlName="firstName"-->
-<!--          />-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="form-row">-->
-<!--        <label for="inputLastName" class="col-sm-2 col-form-label"-->
-<!--          >Last Name-->
-<!--        </label>-->
-<!--        <div class="form-group col-md-10">-->
-<!--          <input-->
-<!--            id="inputLastName"-->
-<!--            type="text"-->
-<!--            class="form-control"-->
-<!--            placeholder="Last name"-->
-<!--            formControlName="lastName"-->
-<!--          />-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="form-row">-->
-<!--        <label for="inputEmail" class="col-sm-2 col-form-label">Email </label>-->
-<!--        <div class="form-group col-md-10">-->
-<!--          <input-->
-<!--            id="inputEmail"-->
-<!--            type="email"-->
-<!--            class="form-control"-->
-<!--            placeholder="Email"-->
-<!--            formControlName="email"-->
-<!--          />-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="form-row">-->
-<!--        <label for="inputAddress" class="col-sm-2 col-form-label"-->
-<!--          >Address-->
-<!--        </label>-->
-<!--        <div class="form-group col-md-10">-->
-<!--          <input-->
-<!--            id="inputAddress"-->
-<!--            type="text"-->
-<!--            class="form-control"-->
-<!--            placeholder="1234 Main St"-->
-<!--            formControlName="address"-->
-<!--          />-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="form-row">-->
-<!--        <label for="inputPhone" class="col-sm-2 col-form-label">Phone </label>-->
-<!--        <div class="form-group col-md-10">-->
-<!--          <input-->
-<!--            id="inputPhone"-->
-<!--            type="number"-->
-<!--            class="form-control"-->
-<!--            placeholder="+375(XX)XXX XX XX"-->
-<!--            formControlName="phone"-->
-<!--            data-inputmask="'mask': '+33 9 99 99 99 99'"-->
-<!--          />-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="d-flex">-->
-<!--        <button-->
-<!--          type="submit"-->
-<!--          class="btn btn-primary ml-auto p-2"-->
-<!--          [disabled]="cartService.cartProducts.length === 0"-->
-<!--        >-->
-<!--          Сheckout-->
-<!--        </button>-->
-<!--      </div>-->
-<!--    </form>-->
-<!--  </div>-->
-<!--</div>-->

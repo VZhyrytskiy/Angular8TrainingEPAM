@@ -1,5 +1,5 @@
 import { ProductsRoutingModule } from './products-routing.module';
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { FirstComponent } from './components/first/first.component';
 import { ProductComponent } from './components/product/product.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
@@ -22,6 +22,7 @@ import { ViewProductComponent } from './components/view-product/view-product.com
     ProductComponent,
     ProductListComponent
   ],
-  providers: []
+  providers: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ProductsModule { }

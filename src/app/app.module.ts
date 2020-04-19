@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginModule } from './login/login.module';
@@ -12,8 +12,8 @@ import { OrderModule } from './order/order.module';
 import { httpInterceptorProviders } from './core/interceptors';
 import { AppSettingsService } from './setings/app-settings.service';
 import { RootStoreModule } from './core/@ngrx/root-store.module';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {ValidatorsModule} from "./validators/validators.module";
+import {NavComponent} from "./header/components/nav/nav.component";
+import {CartModule} from "./cart/cart.module";
 
 @NgModule({
   declarations: [
@@ -21,21 +21,22 @@ import {ValidatorsModule} from "./validators/validators.module";
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
     ProductsModule,
+    CartModule,
     NavModule,
     SharedModule,
     LayoutModule,
     OrderModule,
     LoginModule,
     RootStoreModule,
-    ValidatorsModule,
     // MUST BE LAST
     AppRoutingModule,
   ],
+  exports: [NavComponent],
   providers: [httpInterceptorProviders, AppSettingsService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
+
 export class AppModule { }

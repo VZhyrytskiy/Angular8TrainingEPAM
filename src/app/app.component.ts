@@ -11,12 +11,16 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('title', { static: false })
   titleEl: ElementRef;
 
+  title = 'Super-puper Shop';
+
   constructor(private appSettingsService: AppSettingsService) { }
 
-  ngOnInit() { }
-
-  ngAfterViewInit() {
+  ngOnInit() {
     const key = 'title';
     this.titleEl.nativeElement.textContent = this.appSettingsService.settings[key]; // 'Super-puper Shop';
+  }
+
+  ngAfterViewInit() {
+
   }
 }

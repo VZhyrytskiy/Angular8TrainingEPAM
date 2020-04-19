@@ -1,35 +1,37 @@
-import { TestBed, async } from '@angular/core/testing';
+import {TestBed, async, ComponentFixture} from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import {CUSTOM_ELEMENTS_SCHEMA, DebugElement} from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import {HttpClientTestingModule} from "@angular/common/http/testing";
+import { By } from '@angular/platform-browser';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+  let de: DebugElement;
+  let el: HTMLElement;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
+      imports: [HttpClientTestingModule],
+      declarations: [AppComponent],
+      providers:[HttpClient],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    });
+
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    de = fixture.debugElement.query(By.css('h6'));
+    el = de.nativeElement;
   }));
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeDefined();
   });
 
-  it(`should have as title 'shop'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('shop');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('shop app is running!');
+  it('should have no title in the DOM until manually call `detectChanges`', (done:DoneFn) => {
+    expect(el.textContent).toEqual('');
+    done();
   });
 });

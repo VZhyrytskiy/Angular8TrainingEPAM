@@ -1,18 +1,17 @@
 <nav appChangeColor="AliceBlue">
   <div class="container">
     <ul class="navbar-left">
-      <li><a [routerLink]="['/home']">Home</a></li>
+      <li><a routerLink="['/home']">Home</a></li>
       <li><a href="#about">About</a></li>
-      <li><a [routerLink]="['/order']">Order</a></li>
-      <li *ngIf="userService.isAutorize" ><a [routerLink]="['/admin']">Admin</a></li>
+      <li><a routerLink="['/order']">Order</a></li>
+      <li *ngIf="userService.isAutorize" ><a routerLink="['/admin']">Admin</a></li>
     </ul>
     <app-basket></app-basket>
     <button
       type="button"
       class="btn btn-sm signin"
       [ngClass]="{ 'btn-primary': !userService.isAutorize }"
-      (click)="clickLogOut()"
-    >
+      (click)="clickLogOut()">
       {{ userService.isAutorize ? userService.user.email : "Sign In" }}
     </button>
   </div>

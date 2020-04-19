@@ -51,21 +51,6 @@ export class ViewProductComponent implements OnInit {
     };
 
 
-    // const observer = {
-    //   next: (products: Product[]) => {
-    //     if (products && products.length > 0) {
-    //       this.product = { ...products[0] };
-    //     }
-    //     this.open();
-    //   },
-    //   error: (err: any) => console.log(err)
-    // };
-    // this.route.paramMap
-    //   .pipe(
-    //     switchMap((params: ParamMap) => this.productsObservableService.getProductById(+params.get('productID'))))
-    //   .subscribe(observer);
-    // const let observer = {…}
-
     this.store
       .pipe(
         select(selectSelectedProductByUrl),
