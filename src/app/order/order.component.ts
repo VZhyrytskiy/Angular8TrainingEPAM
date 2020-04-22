@@ -28,7 +28,7 @@ export class OrderComponent implements OnInit {
       lastName: new FormControl(),
       email: new FormControl(),
       address: new FormControl(),
-      phone: new FormControl()
+      phone: new FormControl() // он должен дублироваться
     });
   }
 

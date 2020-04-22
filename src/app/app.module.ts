@@ -33,7 +33,7 @@ import {CartModule} from "./cart/cart.module";
     // MUST BE LAST
     AppRoutingModule,
   ],
-  exports: [NavComponent],
+  exports: [NavComponent], // зачем это?
   providers: [httpInterceptorProviders, AppSettingsService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
